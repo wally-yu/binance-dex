@@ -1,19 +1,19 @@
 from setuptools import setup, find_packages
-version = '0.2.0'
+version = '0.0.34'
 
 with open('README.md') as readme_file:
     long_description = readme_file.read()
 
 setup(
-    name='pyselenium_framework',
+    name='binance_dex',
     version=version,
-    packages=find_packages(exclude=['AUT', 'Execution', 'driver_binary_files']),
+    packages=find_packages(),
     author=u'Wally Yu',
-    install_requires=['selenium==3.14.1'],
-    url='https://github.com/wally-yu/selenium-framework',
+    install_requires=['requests==2.18.4'],
+    url='https://github.com/wally-yu/binance-dex',
     include_package_data=True,
     license='MIT License',
-    description='A Python Selenium Framework Which Makes Code More Easy to Maintain and Read',
+    description='Python Library for Binance DEX, including API, Websocket, JSONRPC',
     long_description=long_description,
     long_description_content_type='text/markdown',
       )

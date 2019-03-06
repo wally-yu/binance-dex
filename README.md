@@ -16,14 +16,22 @@ This python package will provide all methods available as from binance official 
 
 ## Sample Usage:
 
+#### Install package:
+
 ```
-from api.client import Client
+pip install binance-dex
+```
+
+#### Easy to Use
+```
+from binance_dex.api import Client
 
 # create API Client instance
 api_client = Client()
 
 # call corresponding methods
 print(api_client.get_block_time())
+
 ```
 Expected to get results as:
 
