@@ -4,4 +4,4 @@ from binance_dex.api import Client
 api_client = Client()
 
 # call corresponding methods
-print(api_client.get_block_time())
+print(api_client.get_fees())
