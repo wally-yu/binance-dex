@@ -1,0 +1,7 @@
+websocket-client-py3==0.15.0
+mnemonic==0.18
+rlp==1.1.0
+eth_utils==1.4.1
+two1==3.10.9
+pycrypto==2.6.1
+pycryptodome==3.8.0
