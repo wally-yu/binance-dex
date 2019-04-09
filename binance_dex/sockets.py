@@ -9,6 +9,7 @@ except ImportError:
 
 DEFAULT_SOCKET_BASE_ADDR_TEST = 'wss://testnet-dex.binance.org/api/ws/'
 
+
 class BaseSocketConn(object):
     def ws_long_lived_conn(self, ws_url):
         websocket.enableTrace(True)
@@ -26,6 +27,7 @@ class BaseSocketConn(object):
 
     @staticmethod
     def on_error(ws, error):
+        print("### error ###")
         print(error)
 
     @staticmethod
@@ -64,9 +66,16 @@ class SocketChain(BaseSocketConn):
 
     def get_block_height(self):
         ws_url = self.socket_url + '@blockheight'
-        print(ws_url)
         return self.ws_long_lived_conn(ws_url)
 
-print(ssl.OPENSSL_VERSION)
-socket_chain_instance = SocketChain()
-socket_chain_instance.get_block_height()
+
+# socket_chain_instance = SocketChain()
+# socket_chain_instance.get_block_height()
+
+from websocket import create_connection
+ws = create_connection("wss://testnet-dex.binance.org/api/ws/$all@blockheight",
+                       sslopt={"cert_reqs": ssl.CERT_NONE})
+while(1):
+    result =  ws.recv()
+    print(result)
+ws.close()
