@@ -1,7 +1,7 @@
 # Binance DEX API implemented based on: https://testnet-dex.binance.org/doc/api-reference/dex-api/paths.html
 import requests
 import datetime
-from binance_dex.common import binance_api_request, std_ret
+from binance_dex.lib.common import binance_api_request, std_ret
 
 DEFAULT_API_BASE_URL = 'https://testnet-dex.binance.org/'
 
