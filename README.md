@@ -40,3 +40,5 @@ Expected to get results as:
 ```
 #### Note:
 **This package development just getting started, feel free to join if you have interest**
+
+# book to read, put on readme: https://www.fullstackpython.com/websockets.html

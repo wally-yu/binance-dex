@@ -1,10 +1,12 @@
 from binance_dex.lib import crypto
 
+
 class Crypto(object):
     def __init__(self, is_test_net=False):
         crypto.IS_TEST_NET = is_test_net
 
-    def generate_mnemonic(self):
+    @staticmethod
+    def generate_mnemonic():
         """
         Genereate Mnemonic words as string.
         Binance chain using strength=256, will return 24 words
