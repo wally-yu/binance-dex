@@ -226,9 +226,8 @@ class Client(object):
         ... ...]}
         """
         # inputs Validation
-        allowed_interval = ['1m', '3m', '5m', '15m', '30m', '1h', '2h', '4h', '6h', '8h', '12h', '1d', '3d', '1w', '1M']
-        if interval not in allowed_interval:
-            return std_ret(False, 'Interval but be in: %s' % allowed_interval)
+        if interval not in api_types_instance.allowed_kline_interval:
+            return std_ret(False, 'Interval but be in: %s' % api_types_instance.allowed_kline_interval)
         url = '%sapi/v1/klines?interval=%s&limit=%s&symbol=%s' % (self.api_base_url_with_port,
                                                                   interval,
                                                                   limit,
@@ -264,6 +263,8 @@ class Types(object):
     def __init__(self):
         self.allowed_transactions_side = [self.Transactions.side_receive,
                                           self.Transactions.side_send]
+        self.allowed_kline_interval = ['1m', '3m', '5m', '15m', '30m', '1h', '2h', '4h', '6h', '8h', '12h',
+                                       '1d', '3d', '1w', '1M']
 
     class Transactions(object):
 
@@ -280,3 +281,26 @@ class Types(object):
         type_transfer = 'TRANSFER'
         type_proposal = 'PROPOSAL'
         type_vote = 'VOTE'
+
+    class KLine(object):
+        # KLine intervals
+        interval_1min = '1m'
+        interval_3min = '3m'
+        interval_5min = '4m'
+        interval_15min = '15m'
+        interval_30min = '30m'
+        interval_1hour = '1h'
+        interval_2hour = '2h'
+        interval_4hour = '4h'
+        interval_6hour = '6h'
+        interval_8hour = '8h'
+        interval_12hour = '12h'
+        interval_1day = '1d'
+        interval_3day = '3d'
+        interval_1week = '1w'
+        interval_1month = '1M'
+
+
+# Singleton for Types
+api_types_instance = Types()
+
