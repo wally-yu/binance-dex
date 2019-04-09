@@ -3,19 +3,29 @@ import requests
 import datetime
 from binance_dex.lib.common import binance_api_request, std_ret
 
-DEFAULT_API_BASE_URL = 'https://testnet-dex.binance.org/'
 
-class Client():
+IS_TEST_NET = False
+
+API_BASE_URL_TEST_NET = 'https://testnet-dex.binance.org/'
+API_BASE_URL_MAIN_NET = 'https://dex.binance.org/'
+
+
+class Client(object):
     """
     API Client for Binance DEX
     """
-    def __init__(self, api_base_url_with_port=DEFAULT_API_BASE_URL):
+    def __init__(self, is_test_net=IS_TEST_NET, api_base_url_with_port=None):
         """
         API Client
         :param api_base_url_with_port:
         """
-        self.api_base_url_with_port = api_base_url_with_port \
-            if api_base_url_with_port[-1] == '/' else api_base_url_with_port + '/'
+
+        # "api_base_url_with_port" parameter has higher priority
+        if api_base_url_with_port:
+            self.api_base_url_with_port = api_base_url_with_port \
+                if api_base_url_with_port[-1] == '/' else api_base_url_with_port + '/'
+        else:
+            self.api_base_url_with_port = API_BASE_URL_TEST_NET if is_test_net else API_BASE_URL_MAIN_NET
 
     def get_block_time(self):
         """
