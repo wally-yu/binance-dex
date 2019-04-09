@@ -198,12 +198,14 @@ class Client():
          - Description: Gets candlestick/kline bars for a symbol. Bars are uniquely identified by their open time.
          - If the time window is larger than limits, only the first n klines will return. In this case, please either shrink the window or increase the limit to get proper amount of klines.
          - Rate Limit: 10 requests per IP per second.
+
         :param trading_pair: <Trading Pair> example: 'BEY-8C6_BNB'
         :param interval:
         limited to: ['1m', '3m', '5m', '15m', '30m', '1h', '2h', '4h', '6h', '8h', '12h', '1d', '3d', '1w', '1M']
         :param start_time: start time in Milliseconds
         :param end_time: end time in Milliseconds
         :param limit: default 300; max 1000.
+
         :return:
         {'status': True, 'result': [
         {'open_time_stamp': 1552161600000, 'open_time_datetime': datetime.datetime(2019, 3, 9, 20, 0),
@@ -250,55 +252,21 @@ class Types(object):
     """
 
     def __init__(self):
-        self.allowed_transactions_side = [self.Transactions.side_receive(),
-                                          self.Transactions.side_send()]
+        self.allowed_transactions_side = [self.Transactions.side_receive,
+                                          self.Transactions.side_send]
 
     class Transactions(object):
 
-        @staticmethod
-        def side_receive():
-            return 'RECEIVE'
+        side_receive = 'RECEIVE'
+        side_send = 'SEND'
 
-        @staticmethod
-        def side_send():
-            return 'SEND'
-
-        @staticmethod
-        def type_new_order():
-            return 'NEW_ORDER'
-
-        @staticmethod
-        def type_issue_token():
-            return 'ISSUE_TOKEN'
-
-        @staticmethod
-        def type_burn_token():
-            return 'BURN_TOKEN'
-
-        @staticmethod
-        def type_list_token():
-            return 'LIST_TOKEN'
-
-        @staticmethod
-        def type_cancel_order():
-            return 'CANCEL_ORDER'
-
-        @staticmethod
-        def type_freeze_token():
-            return 'FREEZE_TOKEN'
-
-        @staticmethod
-        def type_un_freeze_token():
-            return 'UN_FREEZE_TOKEN'
-
-        @staticmethod
-        def type_transfer():
-            return 'TRANSFER'
-
-        @staticmethod
-        def type_proposal():
-            return 'PROPOSAL'
-
-        @staticmethod
-        def type_vote():
-            return 'VOTE'
+        type_new_order = 'NEW_ORDER'
+        type_issue_token = 'ISSUE_TOKEN'
+        type_burn_token = 'BURN_TOKEN'
+        type_list_token = 'LIST_TOKEN'
+        type_cancel_order = 'CANCEL_ORDER'
+        type_freeze_token = 'FREEZE_TOKEN'
+        type_un_freeze_token = 'UN_FREEZE_TOKEN'
+        type_transfer = 'TRANSFER'
+        type_proposal = 'PROPOSAL'
+        type_vote = 'VOTE'
