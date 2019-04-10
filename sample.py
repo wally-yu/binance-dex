@@ -99,20 +99,23 @@ def customized_msg_handler(ws, received_message):
     print(str(received_message))
 
 
-# # Create Socket Instance
-# socket_instance = BinanceChainSocket(IS_TEST_NET)
-#
+# Create Socket Instance
+socket_instance = BinanceChainSocket(IS_TEST_NET)
+
 # # -- Sample of Short-lived (one-off / send-receive) Connection ----
-# print(socket_instance.get_block_height())
+# print(socket_instance.fetch_block_height_updates())
 #
 # # -- Sample of Long Lived Connection ----
 # # If callback function not provided, will simply print out
-# socket_instance.get_block_height(one_off=False)
+# socket_instance.fetch_block_height_updates(one_off=False)
 #
 # # If callback function provided, can customized handle received data
-# socket_instance.get_block_height(one_off=False, callback_function=customized_msg_handler)
+# socket_instance.fetch_block_height_updates(one_off=False, callback_function=customized_msg_handler)
+#
+#
+# # !!! Note: below samples only provide "long-lived" calls. But actually both are supported !!!
+# # <--- Here we go --->
 
-
-# !!! Note: below samples only provide "Short-lived" calls. But actually both are supported !!!
-# <--- Here we go --->
-
+# socket_instance.fetch_account_updates(user_address='tbnb1r4gc5ftrkr9ez2khph4h5xxd0mf0hd75jf06gw',
+#                                       one_off=False,
+#                                       callback_function=customized_msg_handler)
