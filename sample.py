@@ -4,10 +4,10 @@ IS_TEST_NET = True
 
 # ---------------- API Sample -------------------
 
-from binance_dex.api import Client, api_types_instance
+from binance_dex.api import BinanceChainClient, api_types_instance
 
 # Create API Client instance
-api_client = Client(is_test_net=IS_TEST_NET)
+api_client = BinanceChainClient(is_test_net=IS_TEST_NET)
 
 # # Get Block time
 # print('Block Time: ')
@@ -55,10 +55,10 @@ api_client = Client(is_test_net=IS_TEST_NET)
 
 # -------------- Crypto Sample ------------------
 
-from binance_dex.crypto import Crypto
+from binance_dex.crypto import BinanceChainCrypto
 
 # Create crypto instance
-crypto_instance = Crypto(is_test_net=IS_TEST_NET)
+crypto_instance = BinanceChainCrypto(is_test_net=IS_TEST_NET)
 
 # # Generate Mnemonic words
 # mnemonic_words = crypto_instance.generate_mnemonic()
@@ -99,18 +99,18 @@ def customized_msg_handler(ws, received_message):
     print(str(received_message))
 
 
-# Create Socket Instance
-socket_instance = BinanceChainSocket(IS_TEST_NET)
-
-# -- Sample of Short-lived (one-off / send-receive) Connection ----
-print(socket_instance.get_block_height())
-
-# -- Sample of Long Lived Connection ----
-# If callback function not provided, will simply print out
-socket_instance.get_block_height(one_off=False)
-
-# If callback function provided, can customized handle received data
-socket_instance.get_block_height(one_off=False, callback_function=customized_msg_handler)
+# # Create Socket Instance
+# socket_instance = BinanceChainSocket(IS_TEST_NET)
+#
+# # -- Sample of Short-lived (one-off / send-receive) Connection ----
+# print(socket_instance.get_block_height())
+#
+# # -- Sample of Long Lived Connection ----
+# # If callback function not provided, will simply print out
+# socket_instance.get_block_height(one_off=False)
+#
+# # If callback function provided, can customized handle received data
+# socket_instance.get_block_height(one_off=False, callback_function=customized_msg_handler)
 
 
 # !!! Note: below samples only provide "Short-lived" calls. But actually both are supported !!!

@@ -1,7 +1,7 @@
 from binance_dex.lib import crypto
 
 
-class Crypto(object):
+class BinanceChainCrypto(object):
     def __init__(self, is_test_net=False):
         crypto.IS_TEST_NET = is_test_net
 
