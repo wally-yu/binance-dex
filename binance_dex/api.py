@@ -10,7 +10,7 @@ API_BASE_URL_TEST_NET = 'https://testnet-dex.binance.org/'
 API_BASE_URL_MAIN_NET = 'https://dex.binance.org/'
 
 
-class Client(object):
+class BinanceChainClient(object):
     """
     API Client for Binance DEX
     """
