@@ -55,11 +55,11 @@ api_client = Client(is_test_net=IS_TEST_NET)
 
 # -------------- Crypto Sample ------------------
 
-from binance_dex.crypto import Crypto
-
-# Create crypto instance
-crypto_instance = Crypto(is_test_net=IS_TEST_NET)
-
+# from binance_dex.crypto import Crypto
+#
+# # Create crypto instance
+# crypto_instance = Crypto(is_test_net=IS_TEST_NET)
+#
 # # Generate Mnemonic words
 # mnemonic_words = crypto_instance.generate_mnemonic()
 # print("Generating Mnemonic Words: ")
