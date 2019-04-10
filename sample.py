@@ -55,11 +55,11 @@ api_client = Client(is_test_net=IS_TEST_NET)
 
 # -------------- Crypto Sample ------------------
 
-# from binance_dex.crypto import Crypto
-#
-# # Create crypto instance
-# crypto_instance = Crypto(is_test_net=IS_TEST_NET)
-#
+from binance_dex.crypto import Crypto
+
+# Create crypto instance
+crypto_instance = Crypto(is_test_net=IS_TEST_NET)
+
 # # Generate Mnemonic words
 # mnemonic_words = crypto_instance.generate_mnemonic()
 # print("Generating Mnemonic Words: ")
@@ -85,3 +85,34 @@ api_client = Client(is_test_net=IS_TEST_NET)
 #     print(key)
 
 # ------------ End of Crypto Sample ---------------
+
+
+# -------------- Socket Sample ------------------
+
+from binance_dex.sockets import BinanceChainSocket
+
+
+# Sample of Customized Callback function to handle received data
+def customized_msg_handler(ws, received_message):
+    ''' Simply print out '''
+    print('----- Customized handler -----')
+    print(str(received_message))
+
+
+# Create Socket Instance
+socket_instance = BinanceChainSocket(IS_TEST_NET)
+
+# -- Sample of Short-lived (one-off / send-receive) Connection ----
+print(socket_instance.get_block_height())
+
+# -- Sample of Long Lived Connection ----
+# If callback function not provided, will simply print out
+socket_instance.get_block_height(one_off=False)
+
+# If callback function provided, can customized handle received data
+socket_instance.get_block_height(one_off=False, callback_function=customized_msg_handler)
+
+
+# !!! Note: below samples only provide "Short-lived" calls. But actually both are supported !!!
+# <--- Here we go --->
+
