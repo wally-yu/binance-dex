@@ -10,7 +10,7 @@ from binance_dex.crypto import BinanceChainCrypto
 
 crypto_instance = BinanceChainCrypto(is_test_net)
 ```
-***NOTES***:  
+***NOTES:***  
 `class BinanceChainCrypto` has one positional argument during initializing:
 - If `is_test_net = True` , Encapsulation of a Bitcoin ECDSA public key, 
 address `prefix = 'tbnb'`, otherwise `prefix = 'bnb'`  (***???UNFINISHED***)
@@ -38,7 +38,7 @@ party wear unknown cause cement select wood veteran spoon spider paddle stumble 
 pilot robust brand public boat define battle
 
 ```
-***WARNING***:   
+***WARNING:***  
 **PLEASE TAKE GOOD CARE OF YOUR OWN MNEMONIC WORDS. ANY LEAK OF THE MNEMONIC WORDS MAY CAUSE ENORMOUS AND IRREVERSIBLE
  LOSSES OF YOUR WALLET PROPERTY.**
  
@@ -128,7 +128,7 @@ Sample Return :
  'public_address': 'tbnb1muln7lrsl4y7mmt07rplevzfsvkfgdunm2f42k'}
  ]
 ```
-***NOTES***:  
-![Derivation](http://ppst62hmr.bkt.clouddn.com/derivation.png)
+***NOTES:***  
+![Derivation](http://ppst62hmr.bkt.clouddn.com/derivation.png)    
 Current func only realize to `Depth=1`, which means derivation from mnemonic words stops at `Wallets/Accounts` , and
 each wallet has its own Private key and Public Address. (`depth=3` **need further work**)

@@ -12,7 +12,7 @@ from binance_dex.api import BinanceChainClient
 
 api_client = BinanceChainClient(is_test_net, api_base_url_with_port)
 ```
-***NOTES***:  
+***NOTES:***  
 `class BinanceChainClient` has two positional arguments during initializing:
    - `api_base_url_with_port` parameter has higher priority, if specified,  API base URL will be `api_base_url_with_port`
    -  If `api_base_url_with_port` is `None` and `is_test_net = True` , API base URL will link to `'https://testnet-dex.binance.org/'`, otherwise `'https://dex.binance.org/'`
@@ -24,7 +24,7 @@ api_client = BinanceChainClient(is_test_net, api_base_url_with_port)
 api_client.get_XXX()
 ```
 
-***NOTES***:   
+***NOTES:***   
 All the APIs have the `same` return message format, which means if `no error` happens, message return will be：
  ```python
  {'status': True, 'result': ret_data}
