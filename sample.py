@@ -116,6 +116,39 @@ socket_instance = BinanceChainSocket(IS_TEST_NET)
 # # !!! Note: below samples only provide "long-lived" calls. But actually both are supported !!!
 # # <--- Here we go --->
 
+# Fetch Account Updates, Including: Orders, Transfer, Balance
 # socket_instance.fetch_account_updates(user_address='tbnb1r4gc5ftrkr9ez2khph4h5xxd0mf0hd75jf06gw',
 #                                       one_off=False,
 #                                       callback_function=customized_msg_handler)
+
+# Fetch Market Trades Information by Trading Pair
+# socket_instance.fetch_trades_updates(trading_pairs='100K-9BC_BNB',
+#                                      one_off=False,
+#                                      callback_function=customized_msg_handler)
+
+# Fetch Market Trading Depth Stream by Trading Pair
+# socket_instance.fetch_market_diff_stream(trading_pairs='100K-9BC_BNB',
+#                                          one_off=False,
+#                                          callback_function=customized_msg_handler)
+
+# Fetch Market Top 20 Levels of Bids and Asks
+# socket_instance.fetch_market_depth_stream(trading_pairs='100K-9BC_BNB',
+#                                           one_off=False,
+#                                           callback_function=customized_msg_handler)
+
+# Fetch fetch_kline_updates
+# from binance_dex.api import api_types_instance
+# kline_intervals = api_types_instance.KLine()
+# socket_instance.fetch_kline_updates(trading_pair='100K-9BC_BNB',
+#                                     interval=kline_intervals.interval_1hour,
+#                                     callback_function=customized_msg_handler)
+
+# 24hr Ticker statistics for a single symbol are pushed every second
+# socket_instance.fetch_ticker_streams(trading_pair='100K-9BC_BNB',
+#                                      is_full_data=True,
+#                                      one_off=False,
+#                                      callback_function=customized_msg_handler)
+
+# 24hr Ticker statistics for ALL symbols are pushed every second
+# socket_instance.fetch_ticker_streams(one_off=False,
+#                                      callback_function=customized_msg_handler)
