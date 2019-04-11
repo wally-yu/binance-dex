@@ -21,6 +21,11 @@ def _default_call_back(*args):
 WS_ENTRY_POINTS = {
     'fetch_block_height_updates': '$all@blockheight',
     'fetch_account_updates': '',
+    'fetch_trades_updates': '',
+    'fetch_market_diff_stream': '',
+    'fetch_market_depth_stream': '',
+    'fetch_kline_updates': '',
+    'fetch_ticker_streams': '',
 }
 
 
@@ -63,7 +68,84 @@ class BinanceChainSocket(object):
     def fetch_block_height_updates(self, one_off=True, callback_function=None):
         return self._standard_binance_change_socket_handler(one_off=one_off, callback_function=callback_function)
 
+    def fetch_trades_updates(self, trading_pairs, one_off=True, callback_function=None):
+        """
+        Returns individual trade updates by trading pair name
 
+        :param trading_pairs: Trading Pair
+
+        Sample Return:
+        {"stream":"trades","data":[{"e":"trade","E":7549438,"s":"100K-9BC_BNB","t":"7549438-0","p":"3333.00000000",
+        "q":"0.02611100","b":"1D518A2563B0CB912AD70DEB7A18CD7ED2FBB7D4-11",
+        "a":"EA1AE716501D1DB0B9F295A30891D9E562828678-12","T":1554964166437515341,
+        "sa":"tbnb1agdww9jsr5wmpw0jjk3s3yweu43g9pnc4p5kg7","ba":"tbnb1r4gc5ftrkr9ez2khph4h5xxd0mf0hd75jf06gw"}]}
+        """
+        postfix_url = trading_pairs + '@trades'
+        return self._standard_binance_change_socket_handler(one_off=one_off,
+                                                            callback_function=callback_function,
+                                                            parameter=postfix_url)
+
+    def fetch_market_diff_stream(self, trading_pairs, one_off=True, callback_function=None):
+        """
+        Order book price and quantity depth updates used to locally keep an order book.
+
+        :param trading_pairs: Trading Pair
+
+        Sample Return:
+        {"stream":"marketDiff","data":{"e":"depthUpdate","E":1554964484,"s":"100K-9BC_BNB",
+        "b":[["3333.00000000","0.07398900"]],"a":[]}}
+        """
+        postfix_url = trading_pairs + '@marketDiff'
+        return self._standard_binance_change_socket_handler(one_off=one_off,
+                                                            callback_function=callback_function,
+                                                            parameter=postfix_url)
+
+    def fetch_market_depth_stream(self, trading_pairs, one_off=True, callback_function=None):
+        """
+        Fetch Market Top 20 Levels of Bids and Asks
+
+        :param trading_pairs: Trading Pair
+
+        Sample Return:
+        {"stream":"marketDepth","data":{"lastUpdateId":7551469,"symbol":"100K-9BC_BNB",
+        "bids":[["3333.00000000","0.07398900"]],"asks":[["66666.00000000","1.68270010"],["70000.00000000","1.00000000"],
+        ["90000000000.00000000","40.05079290"]]}}
+        """
+        postfix_url = trading_pairs + '@marketDepth'
+        return self._standard_binance_change_socket_handler(one_off=one_off,
+                                                            callback_function=callback_function,
+                                                            parameter=postfix_url)
+
+    def fetch_kline_updates(self, trading_pair, interval, one_off=True, callback_function=None):
+        postfix_url = '%s@kline_%s' % (trading_pair, interval)
+        return self._standard_binance_change_socket_handler(one_off=one_off,
+                                                            callback_function=callback_function,
+                                                            parameter=postfix_url)
+
+    def fetch_ticker_streams(self, trading_pair=None, is_full_data=True, one_off=True, callback_function=None):
+        """
+        24hr Ticker statistics for a single symbol are pushed every second
+
+        :param trading_pair: Trading Pair, if not provide will return all data
+        :param is_full_data: will return full data?
+
+        Sample Return:
+        {"stream":"ticker","data":{"e":"24hrTicker","E":1554966678,"s":"100K-9BC_BNB","p":"0.00000000",
+        "P":"0.00000000","w":"5023.09923713","x":"3333.00000000","c":"66666.00000000","Q":"0.00010000","b":"0.00000000",
+        "B":"0.00000000","a":"66666.00000000","A":"1.68260010","o":"66666.00000000","h":"66666.00000000",
+        "l":"3333.00000000","v":"0.02784240","q":"139.85513820","O":1554880245974,"C":1554966645974,"F":"7366949-0",
+        "L":"7554709-0","n":23}}
+        """
+        if trading_pair:
+            if is_full_data:
+                postfix_url = '%s@ticker' % trading_pair
+            else:
+                postfix_url = '%s@miniTicker' % trading_pair
+        else:
+            postfix_url = '$all@allTickers'
+        return self._standard_binance_change_socket_handler(one_off=one_off,
+                                                            callback_function=callback_function,
+                                                            parameter=postfix_url)
 
     def _standard_binance_change_socket_handler(self, one_off, callback_function, parameter=None):
         # Get caller function name
@@ -79,7 +161,7 @@ class BinanceChainSocket(object):
         ws_url = self.base_ws_url + ws_api_name
         if parameter:
             ws_url += parameter
-        print(ws_url)
+        print('WebSocket URL:' + ws_url)
 
         # Create Socket instance
         socket_obj = BinanceChainSocketConn(ws_url=ws_url)
