@@ -21,7 +21,7 @@ This python package will provide all methods available as from binance official 
 ```
 pip install binance-dex
 ```
-Notes: If you are working on Windows platform, compiling tools Microsoft VC 14.0 is required.
+Notes: If you are working on Windows platform, compiling tools `Microsoft Visual C++ 14.0` is required.
 #### Easy to Use
 ```
 from binance_dex.api import Client
