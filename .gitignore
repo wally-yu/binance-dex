@@ -308,3 +308,6 @@ redpulse/media/
 redpulse/fixtures/es
 
 docker-compose.yml
+
+# Pycharm
+.idea/
