@@ -105,7 +105,7 @@ socket_instance = BinanceChainSocket(IS_TEST_NET)
 # # -- Sample of Short-lived (one-off / send-receive) Connection ----
 # print(socket_instance.fetch_block_height_updates())
 #
-# # -- Sample of Long Lived Connection ----
+# # -- Sample of Long Lived Connection WITHOUT customized Callback ----
 # # If callback function not provided, will simply print out
 # socket_instance.fetch_block_height_updates(one_off=False)
 #
@@ -152,3 +152,14 @@ socket_instance = BinanceChainSocket(IS_TEST_NET)
 # 24hr Ticker statistics for ALL symbols are pushed every second
 # socket_instance.fetch_ticker_streams(one_off=False,
 #                                      callback_function=customized_msg_handler)
+
+
+# -------------- Node RPC Sample ------------------
+
+from binance_dex.node_rpc import BinanceChainNodeRPC
+
+# create instance
+node_rpc_instance = BinanceChainNodeRPC(is_test_net=True,
+                                        node_rpc_url=None)
+
+# ----------- End of Node RPC Sample --------------

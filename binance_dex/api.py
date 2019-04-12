@@ -13,6 +13,7 @@ API_BASE_URL_MAIN_NET = 'https://dex.binance.org/'
 class BinanceChainClient(object):
     """
     API Client for Binance DEX
+    Official Document: https://binance-chain.github.io/api-reference/dex-api/paths.html
     """
     def __init__(self, is_test_net=IS_TEST_NET, api_base_url_with_port=None):
         """

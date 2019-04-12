@@ -30,6 +30,10 @@ WS_ENTRY_POINTS = {
 
 
 class BinanceChainSocket(object):
+    """
+    Web Socket Implementation
+    Official Document: https://binance-chain.github.io/api-reference/dex-api/ws-connection.html
+    """
     def __init__(self, is_test_net=IS_TEST_NET):
         self.base_ws_url = SOCKET_BASE_ADDR_TEST_NET if is_test_net else SOCKET_BASE_ADDR_MAIN_NET
 
