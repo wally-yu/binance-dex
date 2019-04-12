@@ -18,7 +18,7 @@ from binance_dex.lib.bech32 import convertbits, bech32_encode
 from Crypto.Hash import keccak
 
 
-bitcoin_curve = secp256k1()
+binance_chain_curve = secp256k1()
 sha3_256 = lambda x: keccak.new(digest_bits=256, data=x)
 IS_TEST_NET = False  # A varialbe to switch test net / main net, default would be MAIN-NET
 BIP_32_PATH = "44'/714'/0'/0/0"  # https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki
@@ -316,7 +316,7 @@ class PrivateKey(PrivateKeyBase):
         Returns:
             PrivateKey: The object representing the private key.
         """
-        return PrivateKey(random.SystemRandom().randrange(1, bitcoin_curve.n))
+        return PrivateKey(random.SystemRandom().randrange(1, binance_chain_curve.n))
 
     def __init__(self, k):
         self.key = k
@@ -332,7 +332,7 @@ class PrivateKey(PrivateKeyBase):
         """
         if self._public_key is None:
             self._public_key = PublicKey.from_point(
-                bitcoin_curve.public_key(self.key))
+                binance_chain_curve.public_key(self.key))
         return self._public_key
 
     def raw_sign(self, message, do_hash=True):
@@ -359,14 +359,14 @@ class PrivateKey(PrivateKeyBase):
         else:
             raise TypeError("message must be either str or bytes!")
 
-        sig_pt, rec_id = bitcoin_curve.sign(msg, self.key, do_hash)
+        sig_pt, rec_id = binance_chain_curve.sign(msg, self.key, do_hash)
 
         # Take care of large s:
         # Bitcoin deals with large s, by subtracting
         # s from the curve order. See:
         # https://bitcointalk.org/index.php?topic=285142.30;wap2
-        if sig_pt.y >= (bitcoin_curve.n // 2):
-            sig_pt = Point(sig_pt.x, bitcoin_curve.n - sig_pt.y)
+        if sig_pt.y >= (binance_chain_curve.n // 2):
+            sig_pt = Point(sig_pt.x, binance_chain_curve.n - sig_pt.y)
             rec_id ^= 0x1
 
         return (sig_pt, rec_id)
@@ -449,7 +449,7 @@ class PublicKey(PublicKeyBase):
         Returns:
             PublicKey: A PublicKey object.
         """
-        point = ECPointAffine.from_int(bitcoin_curve, i)
+        point = ECPointAffine.from_int(binance_chain_curve, i)
         return PublicKey.from_point(point)
 
     @staticmethod
@@ -497,7 +497,7 @@ class PublicKey(PublicKeyBase):
                 raise ValueError("key_bytes must be exactly 33 bytes long when compressed.")
 
             x = int.from_bytes(b[1:33], 'big')
-            ys = bitcoin_curve.y_from_x(x)
+            ys = binance_chain_curve.y_from_x(x)
 
             # Pick the one that corresponds to key_type
             last_bit = key_type - 0x2
@@ -537,7 +537,7 @@ class PublicKey(PublicKeyBase):
             raise ValueError("The signature must have a recovery_id.")
 
         msg = get_bytes(message)
-        pub_keys = bitcoin_curve.recover_public_key(msg,
+        pub_keys = binance_chain_curve.recover_public_key(msg,
                                                     signature,
                                                     signature.recovery_id)
 
@@ -549,8 +549,8 @@ class PublicKey(PublicKeyBase):
 
 
     def __init__(self, x, y):
-        p = ECPointAffine(bitcoin_curve, x, y)
-        if not bitcoin_curve.is_on_curve(p):
+        p = ECPointAffine(binance_chain_curve, x, y)
+        if not binance_chain_curve.is_on_curve(p):
             raise ValueError("The provided (x, y) are not on the secp256k1 curve.")
 
         self.point = p
@@ -605,7 +605,7 @@ class PublicKey(PublicKeyBase):
             otherwise.
         """
         msg = get_bytes(message)
-        return bitcoin_curve.verify(msg, signature, self.point, do_hash)
+        return binance_chain_curve.verify(msg, signature, self.point, do_hash)
 
     def to_base64(self):
         """ Hex representation of the serialized byte stream.
@@ -616,7 +616,7 @@ class PublicKey(PublicKeyBase):
 
     def __int__(self):
         mask = 2 ** 256 - 1
-        return ((self.point.x & mask) << bitcoin_curve.nlen) | (self.point.y & mask)
+        return ((self.point.x & mask) << binance_chain_curve.nlen) | (self.point.y & mask)
 
     def __bytes__(self):
         return bytes(self.point)
@@ -710,9 +710,9 @@ class Signature(object):
 
         s = int.from_bytes(sb, 'big')
 
-        if r < 1 or r >= bitcoin_curve.n:
+        if r < 1 or r >= binance_chain_curve.n:
             raise ValueError("DER signature R is not between 1 and N - 1.")
-        if s < 1 or s >= bitcoin_curve.n:
+        if s < 1 or s >= binance_chain_curve.n:
             raise ValueError("DER signature S is not between 1 and N - 1.")
 
         return Signature(r, s)
@@ -823,7 +823,7 @@ class Signature(object):
         return base64.b64encode(bytes(self))
 
     def __bytes__(self):
-        nbytes = math.ceil(bitcoin_curve.nlen / 8)
+        nbytes = math.ceil(binance_chain_curve.nlen / 8)
         return self.r.to_bytes(nbytes, 'big') + self.s.to_bytes(nbytes, 'big')
 
 
@@ -1135,7 +1135,7 @@ class HDPrivateKey(HDKey, PrivateKeyBase):
         I = hmac.new(b"Bitcoin seed", S, hashlib.sha512).digest()
         Il, Ir = I[:32], I[32:]
         parse_Il = int.from_bytes(Il, 'big')
-        if parse_Il == 0 or parse_Il >= bitcoin_curve.n:
+        if parse_Il == 0 or parse_Il >= binance_chain_curve.n:
             raise ValueError("Bad seed, resulting in invalid key!")
 
         return HDPrivateKey(key=parse_Il, chain_code=Ir, index=0, depth=0)
@@ -1161,10 +1161,10 @@ class HDPrivateKey(HDKey, PrivateKeyBase):
         Il, Ir = I[:32], I[32:]
 
         parse_Il = int.from_bytes(Il, 'big')
-        if parse_Il >= bitcoin_curve.n:
+        if parse_Il >= binance_chain_curve.n:
             return None
 
-        child_key = (parse_Il + parent_key._key.key) % bitcoin_curve.n
+        child_key = (parse_Il + parent_key._key.key) % binance_chain_curve.n
 
         if child_key == 0:
             # Incredibly unlucky choice
@@ -1299,7 +1299,7 @@ class HDPublicKey(HDKey, PublicKeyBase):
                              hashlib.sha512).digest()
                 Il, Ir = I[:32], I[32:]
                 parse_Il = int.from_bytes(Il, 'big')
-                if parse_Il >= bitcoin_curve.n:
+                if parse_Il >= binance_chain_curve.n:
                     return None
 
                 temp_priv_key = PrivateKey(parse_Il)

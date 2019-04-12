@@ -8,7 +8,7 @@ import os
 
 MAX_TARGET = 0x00000000FFFF0000000000000000000000000000000000000000000000000000
 
-""" Some of the functions were reference from https://github.com/zhuquanbin/ethereum-bip44 """
+""" Some of the functions were referenced from https://github.com/zhuquanbin/ethereum-bip44 """
 
 def binance_api_request(url, method, body=None):
     """

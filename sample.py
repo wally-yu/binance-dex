@@ -149,7 +149,7 @@ socket_instance = BinanceChainSocket(IS_TEST_NET)
 #                                      one_off=False,
 #                                      callback_function=customized_msg_handler)
 
-# 24hr Ticker statistics for ALL symbols are pushed every second
+# # 24hr Ticker statistics for ALL symbols are pushed every second
 # socket_instance.fetch_ticker_streams(one_off=False,
 #                                      callback_function=customized_msg_handler)
 
