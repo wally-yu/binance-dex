@@ -19,7 +19,7 @@
 # THE SOFTWARE.
 
 """Reference implementation for Bech32 and segwit addresses."""
-""" Wally Yu: this file was referenced from https://github.com/ChorusOne/cosmos-bech32-convertor"""
+""" This file was referenced from https://github.com/ChorusOne/cosmos-bech32-convertor"""
 
 CHARSET = "qpzry9x8gf2tvdw0s3jn54khce6mua7l"
 

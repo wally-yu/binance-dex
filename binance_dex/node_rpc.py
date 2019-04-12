@@ -18,7 +18,7 @@ class BinanceChainNodeRPC(object):
      - JSONRPC over HTTP
      - JSONRPC over websockets
 
-    this SDK using "JSONRPC over HTTP" methodology
+    This SDK using "JSONRPC over HTTP" methodology
     """
 
     def __init__(self, node_rpc_url=None, is_test_net=False):
@@ -69,7 +69,6 @@ class BinanceChainNodeRPC(object):
             return True
         else:
             return False
-
 
     def _wrapped_request(self, para=None):
         # Get caller function name

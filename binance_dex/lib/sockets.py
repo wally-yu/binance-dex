@@ -15,41 +15,8 @@ try:
 except ImportError:
     import _thread as thread
 
-#
-#
-#
-# class SocketAccount(BaseSocketConn):
-#     def __init__(self, address):
-#         socket_url = DEFAULT_SOCKET_BASE_ADDR_TEST + address
-#         self.ws_long_lived_conn(socket_url)
-#
-#
-# class SocketTrades(BaseSocketConn):
-#     def __init__(self, trading_pair):
-#         socket_url = DEFAULT_SOCKET_BASE_ADDR_TEST + trading_pair
-#         self.ws_long_lived_conn(socket_url)
-#
-#
-# class SocketChain(BaseSocketConn):
-#     def __init__(self):
-#         self.socket_url = DEFAULT_SOCKET_BASE_ADDR_TEST + '$all'
-#
-#
-#     def get_block_height(self):
-#         ws_url = self.socket_url + '@blockheight'
-#         return self.ws_long_lived_conn(ws_url)
-
-
-# socket_chain_instance = SocketChain()
-# socket_chain_instance.get_block_height()
-
 from websocket import create_connection
-# ws = create_connection("wss://testnet-dex.binance.org/api/ws/$all@blockheight",
-#                        sslopt={"cert_reqs": ssl.CERT_NONE})
-# while(1):
-#     result =  ws.recv()
-#     print(result)
-# ws.close()
+
 
 class BinanceChainSocketConn(object):
     """
