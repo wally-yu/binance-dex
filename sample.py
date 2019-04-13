@@ -20,6 +20,11 @@ api_client = BinanceChainClient(is_test_net=IS_TEST_NET)
 # # Get Validator
 # print('Validators: ')
 # print(api_client.get_validators())
+
+# # Get Validator
+# print('Peers: ')
+# print(api_client.get_peers())
+
 #
 # # Get Listing Tokens
 # print('Token Listed: ')
