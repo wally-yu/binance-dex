@@ -158,8 +158,44 @@ socket_instance = BinanceChainSocket(IS_TEST_NET)
 
 from binance_dex.node_rpc import BinanceChainNodeRPC
 
-# create instance
-node_rpc_instance = BinanceChainNodeRPC(is_test_net=True,
-                                        node_rpc_url=None)
+# Create Instance
+# # using existing RPC node
+# node_rpc_instance = BinanceChainNodeRPC(is_test_net=True,
+#                                         node_rpc_url=None)
+
+# using your own node
+node_rpc_instance = BinanceChainNodeRPC(node_rpc_url='https://seed-pre-s3.binance.org')
+# # Get available RPC endpoints (HTML format)
+# print(node_rpc_instance.get_list())
+
+# # Get info about the application
+# print(node_rpc_instance.abci_info())
+
+# # Get block at a given height. If no height is provided, it will fetch the latest block
+# print(node_rpc_instance.block(height=10))
+
+# # gets ABCIResults at a given height
+# print(node_rpc_instance.block_results(height=100))
+
+# # Broadcast Transaction (Async),
+# print(node_rpc_instance.broadcast_tx_async(tx_id='123'))
+
+# # Broadcast Transaction Sync,
+# print(node_rpc_instance.broadcast_tx_sync(tx_id='123'))
+
+# # Broadcast Trsaction Commit
+# print(node_rpc_instance.broadcast_tx_commit(tx_id='123'))
+
+# # Get block commit at a given height.
+# print(node_rpc_instance.get_commit(height=10))
+
+# # Get the consensus parameters at the given block height
+# print(node_rpc_instance.consensus_params(height=100))
+
+# # ConsensusState returns a concise summary of the consensus state.
+# print(node_rpc_instance.consensus_state())
+
+# # Get genesis file
+# print(node_rpc_instance.genesis())
 
 # ----------- End of Node RPC Sample --------------
