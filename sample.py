@@ -34,6 +34,12 @@ api_client = BinanceChainClient(is_test_net=IS_TEST_NET)
 # address = 'tbnb1r4gc5ftrkr9ez2khph4h5xxd0mf0hd75jf06gw'
 # print('Account info for %s:' % address)
 # print(api_client.get_account_info_by_address(address=address))
+
+# # Get Account Sequence By Address
+address = 'tbnb1r4gc5ftrkr9ez2khph4h5xxd0mf0hd75jf06gw'
+# print('Account sequence for %s:' % address)
+print(api_client.get_account_sequence_by_address(address=address))
+
 #
 # # Get Transaction Info By TxId
 # tx_id = '35B8D4070200FFBE045432AC9D87232BEC1FFAD9E6A6C8979CE2FE631B644B9E'

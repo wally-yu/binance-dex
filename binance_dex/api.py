@@ -198,6 +198,22 @@ class BinanceChainClient(object):
                                   method='GET')
         return ret
 
+    def get_account_sequence_by_address(self, address):
+        """
+         - Summary: Get an account sequence.
+         - Description: Gets an account sequence for an address.
+         - Destination: Validator node.
+         - Rate Limit: 5 requests per IP per second.
+
+        :param address: <Public address>
+        :return:
+        {'status': True, 'result': {'sequence': 17}}
+        """
+        url = '%sapi/v1/account/%s/sequence' % (self.api_base_url_with_port, address)
+        ret = binance_api_request(url=url,
+                                  method='GET')
+        return ret        
+
     def get_transaction(self, tx_hash):
         """
          - Summary: Get a transaction.
