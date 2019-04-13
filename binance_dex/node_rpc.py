@@ -28,6 +28,7 @@ NODE_RPC_ENTRY_POINT_MAPPING = {
 }
 
 
+
 class BinanceChainNodeRPC(object):
     """
     Node RPC Service
@@ -484,6 +485,7 @@ class BinanceChainNodeRPC(object):
         if para:
             request_url += para
         print('Request URL: %s ... ...' % request_url)
+
         try:
             req_ret = requests.get(request_url)
             return req_ret

@@ -6,3 +6,4 @@ two1==3.10.9
 pycrypto==2.6.1
 pycryptodome==3.8.0
 requests==2.11.1
+base58==0.2.2

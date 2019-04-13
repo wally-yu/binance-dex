@@ -117,6 +117,51 @@ class BinanceChainClient(object):
                                   method='GET')
         return ret
 
+    def get_peers(self):
+        """
+         - Summary: Get network peers.
+         - Description: Gets the list of network peers.
+         - Destination: Witness node.
+         - Rate Limit: 1 requests per IP per second.
+         - Return:
+            Sample success result:
+            {'status': True, 'result': [
+                {'accelerated': True, 
+            'access_addr': 'https://testnet-dex.binance.org:443', 
+            'capabilities': ['qs', 'ap', 'ws'], 'id': 'gateway-ingress', 
+            'listen_addr': 'https://testnet-dex.binance.org:443', 
+            'moniker': 'gateway-ingress', 'network': 'gateway', 
+            'stream_addr': 'wss://testnet-dex.binance.org', 'version': '1.0.0'}, 
+            {'access_addr': 'http://seed-pre-s1.binance.org:80', 
+            'capabilities': ['node'], 'id': 'aea74b16d28d06cbfbb1179c177e8cd71315cce4', 
+            'listen_addr': 'http://seed-pre-s1.binance.org:80', 
+            'moniker': 'seed', 'network': 'Binance-Chain-Nile', 
+            'original_listen_addr': 'ac6d84c3f243a11e98ced0ac108d49f7-704ea117aa391bbe.elb.ap-northeast-1.amazonaws.com:27146', 
+            'version': '0.30.1'}, 
+            {'access_addr': 'https://data-seed-pre-0-s1.binance.org:443', 
+            'capabilities': ['node'], 'id': '9612b570bffebecca4776cb4512d08e252119005', 
+            'listen_addr': 'https://data-seed-pre-0-s1.binance.org:443', 'moniker': 'data-seed-0', 
+            'network': 'Binance-Chain-Nile', 
+            'original_listen_addr': 'a0b88b324243a11e994280efee3352a7-96b6996626c6481d.elb.ap-northeast-1.amazonaws.com:27146', 
+            'version': '0.30.1'}, 
+            {'access_addr': 'https://data-seed-pre-1-s1.binance.org:443', 
+            'capabilities': ['node'], 'id': '8c379d4d3b9995c712665dc9a9414dbde5b30483', 
+            'listen_addr': 'https://data-seed-pre-1-s1.binance.org:443', 
+            'moniker': 'data-seed-1', 'network': 'Binance-Chain-Nile', 
+            'original_listen_addr': 'aa1e4d0d1243a11e9a951063f6065739-7a82be90a58744b6.elb.ap-northeast-1.amazonaws.com:27146', 
+            'version': '0.30.1'}, 
+            {'access_addr': 'https://data-seed-pre-2-s1.binance.org:443', 'capabilities': ['node'], 
+            'id': '7156d461742e2a1e569fd68426009c4194830c93', 
+            'listen_addr': 'https://data-seed-pre-2-s1.binance.org:443', 
+            'moniker': 'data-seed-2', 'network': 'Binance-Chain-Nile', 
+            'original_listen_addr': 'aa841c226243a11e9a951063f6065739-eee556e439dc6a3b.elb.ap-northeast-1.amazonaws.com:27146', 
+            'version': '0.30.1'}]}
+        """
+        url = '%sapi/v1/peers' % (self.api_base_url_with_port)
+        ret = binance_api_request(url=url,
+                                  method='GET')
+        return ret
+
     def get_tokens(self):
         """
          - Summary: Get tokens list.
@@ -152,6 +197,24 @@ class BinanceChainClient(object):
         ret = binance_api_request(url=url,
                                   method='GET')
         return ret
+
+
+    def get_account_sequence_by_address(self, address):
+        """
+         - Summary: Get an account sequence.
+         - Description: Gets an account sequence for an address.
+         - Destination: Validator node.
+         - Rate Limit: 5 requests per IP per second.
+
+        :param address: <Public address>
+        :return:
+        {'status': True, 'result': {'sequence': 17}}
+        """
+        url = '%sapi/v1/account/%s/sequence' % (self.api_base_url_with_port, address)
+        ret = binance_api_request(url=url,
+                                  method='GET')
+        return ret        
+
 
     def get_transaction(self, tx_hash):
         """
@@ -202,6 +265,32 @@ class BinanceChainClient(object):
         ret = binance_api_request(url=url,
                                   method='GET')
         return ret
+
+    def get_depth(self, symbol, limit=None):
+        """
+         - Summary: Get the order book.
+         - Description: Gets the order book depth data for a given pair symbol.
+         - The given limit must be one of the allowed limits below.
+         - Destination: Validator node.
+         - Rate Limit: 10 requests per IP per second.
+
+        :param symbol: Market pair symbol, e.g. NNB-0AD_BNB
+        :param limit:
+        limited to: [5, 10, 20, 50, 100, 500, 1000]
+
+        :return:
+        {'status': True, 'result': {'asks': [], 'bids': [], 'height': 8034721}}
+        """
+        # inputs Validation
+        if limit and limit not in api_types_instance.allowed_depth_limit:
+            return std_ret(False, 'Limit must be in: %s' % api_types_instance.allowed_depth_limit)
+ 
+        url = '%sapi/v1/depth?symbol=%s' % (self.api_base_url_with_port, symbol)
+        url = url + '&limit=%s' % limit if limit else url
+        ret = binance_api_request(url=url,
+                                  method='GET')
+        return ret
+
 
     def get_klines(self, trading_pair, interval='4h', start_time=None, end_time=None, limit=300):
         """
@@ -266,6 +355,8 @@ class Types(object):
                                           self.Transactions.side_send]
         self.allowed_kline_interval = ['1m', '3m', '5m', '15m', '30m', '1h', '2h', '4h', '6h', '8h', '12h',
                                        '1d', '3d', '1w', '1M']
+
+        self.allowed_depth_limit = [5, 10, 20, 50, 100, 500, 1000]
 
     class Transactions(object):
 

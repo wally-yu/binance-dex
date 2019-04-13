@@ -20,6 +20,11 @@ api_client = BinanceChainClient(is_test_net=IS_TEST_NET)
 # # Get Validator
 # print('Validators: ')
 # print(api_client.get_validators())
+
+# # Get Validator
+# print('Peers: ')
+# print(api_client.get_peers())
+
 #
 # # Get Listing Tokens
 # print('Token Listed: ')
@@ -29,6 +34,12 @@ api_client = BinanceChainClient(is_test_net=IS_TEST_NET)
 # address = 'tbnb1r4gc5ftrkr9ez2khph4h5xxd0mf0hd75jf06gw'
 # print('Account info for %s:' % address)
 # print(api_client.get_account_info_by_address(address=address))
+
+# # Get Account Sequence By Address
+# address = 'tbnb1r4gc5ftrkr9ez2khph4h5xxd0mf0hd75jf06gw'
+# print('Account sequence for %s:' % address)
+# print(api_client.get_account_sequence_by_address(address=address))
+
 #
 # # Get Transaction Info By TxId
 # tx_id = '35B8D4070200FFBE045432AC9D87232BEC1FFAD9E6A6C8979CE2FE631B644B9E'
@@ -42,6 +53,10 @@ api_client = BinanceChainClient(is_test_net=IS_TEST_NET)
 # # Get Binance Chain Fees
 # print('Fees:')
 # print(api_client.get_fees())
+
+# # Get order book
+# print('Orders:')
+# print(api_client.get_depth("NNB-0AD_BNB", 5))
 
 # # Get KLines
 # trading_pair = 'DEX.B-C72_BNB'
@@ -159,6 +174,7 @@ socket_instance = BinanceChainSocket(IS_TEST_NET)
 from binance_dex.node_rpc import BinanceChainNodeRPC
 
 # Create Instance
+
 # # OPTION 1: using existing RPC node
 # node_rpc_instance = BinanceChainNodeRPC(is_test_net=True,
 #                                         node_rpc_url=None)
@@ -202,9 +218,6 @@ node_rpc_instance = BinanceChainNodeRPC(node_rpc_url='https://seed-pre-s3.binanc
 # # Get network info
 # print(node_rpc_instance.net_info())
 
-# # Get network info
-# print(node_rpc_instance.net_info())
-
 # # Get Tendermint status including node info, pubkey, latest block hash, app hash, block height and time
 # print(node_rpc_instance.status())
 
@@ -214,8 +227,7 @@ node_rpc_instance = BinanceChainNodeRPC(node_rpc_url='https://seed-pre-s3.binanc
 # # Get unconfirmed transactions (maximum ?limit entries) including their number
 # print(node_rpc_instance.unconfirmed_txs())
 
-# Get the validator set at the given block height. If no height is provided, it will fetch the current validator set
-print(node_rpc_instance.validators(height=10))
-
+# # Get the validator set at the given block height. If no height is provided, it will fetch the current validator set
+# print(node_rpc_instance.validators(height=10))
 
 # ----------- End of Node RPC Sample --------------
