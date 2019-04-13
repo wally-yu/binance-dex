@@ -264,6 +264,31 @@ class BinanceChainClient(object):
                                   method='GET')
         return ret
 
+    def get_depth(self, symbol, limit=None):
+        """
+         - Summary: Get the order book.
+         - Description: Gets the order book depth data for a given pair symbol.
+         - The given limit must be one of the allowed limits below.
+         - Destination: Validator node.
+         - Rate Limit: 10 requests per IP per second.
+
+        :param symbol: Market pair symbol, e.g. NNB-0AD_BNB
+        :param limit:
+        limited to: [5, 10, 20, 50, 100, 500, 1000]
+
+        :return:
+        {'status': True, 'result': {'asks': [], 'bids': [], 'height': 8034721}}
+        """
+        # inputs Validation
+        if limit and limit not in api_types_instance.allowed_depth_limit:
+            return std_ret(False, 'Limit must be in: %s' % api_types_instance.allowed_depth_limit)
+ 
+        url = '%sapi/v1/depth?symbol=%s' % (self.api_base_url_with_port, symbol)
+        url = url + '&limit=%s' % limit if limit else url
+        ret = binance_api_request(url=url,
+                                  method='GET')
+        return ret
+
     def get_klines(self, trading_pair, interval='4h', start_time=None, end_time=None, limit=300):
         """
          - Summary: Get candlestick bars.
@@ -327,6 +352,7 @@ class Types(object):
                                           self.Transactions.side_send]
         self.allowed_kline_interval = ['1m', '3m', '5m', '15m', '30m', '1h', '2h', '4h', '6h', '8h', '12h',
                                        '1d', '3d', '1w', '1M']
+        self.allowed_depth_limit = [5, 10, 20, 50, 100, 500, 1000]
 
     class Transactions(object):
 

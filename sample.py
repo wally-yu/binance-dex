@@ -36,9 +36,9 @@ api_client = BinanceChainClient(is_test_net=IS_TEST_NET)
 # print(api_client.get_account_info_by_address(address=address))
 
 # # Get Account Sequence By Address
-address = 'tbnb1r4gc5ftrkr9ez2khph4h5xxd0mf0hd75jf06gw'
+# address = 'tbnb1r4gc5ftrkr9ez2khph4h5xxd0mf0hd75jf06gw'
 # print('Account sequence for %s:' % address)
-print(api_client.get_account_sequence_by_address(address=address))
+# print(api_client.get_account_sequence_by_address(address=address))
 
 #
 # # Get Transaction Info By TxId
@@ -53,6 +53,10 @@ print(api_client.get_account_sequence_by_address(address=address))
 # # Get Binance Chain Fees
 # print('Fees:')
 # print(api_client.get_fees())
+
+# # Get order book
+# print('Orders:')
+# print(api_client.get_depth("NNB-0AD_BNB", 5))
 
 # # Get KLines
 # trading_pair = 'DEX.B-C72_BNB'
