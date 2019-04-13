@@ -159,12 +159,13 @@ socket_instance = BinanceChainSocket(IS_TEST_NET)
 from binance_dex.node_rpc import BinanceChainNodeRPC
 
 # Create Instance
-# # using existing RPC node
+# # OPTION 1: using existing RPC node
 # node_rpc_instance = BinanceChainNodeRPC(is_test_net=True,
 #                                         node_rpc_url=None)
 
-# using your own node
+# OPTION 2: using your own node
 node_rpc_instance = BinanceChainNodeRPC(node_rpc_url='https://seed-pre-s3.binance.org')
+
 # # Get available RPC endpoints (HTML format)
 # print(node_rpc_instance.get_list())
 
@@ -197,5 +198,24 @@ node_rpc_instance = BinanceChainNodeRPC(node_rpc_url='https://seed-pre-s3.binanc
 
 # # Get genesis file
 # print(node_rpc_instance.genesis())
+
+# # Get network info
+# print(node_rpc_instance.net_info())
+
+# # Get network info
+# print(node_rpc_instance.net_info())
+
+# # Get Tendermint status including node info, pubkey, latest block hash, app hash, block height and time
+# print(node_rpc_instance.status())
+
+# # Query the transaction results by Hash
+# print(node_rpc_instance.transaction(hash='C3FF309D7226768FC48B5E2D2D91719D77BAFA66DF7D3C53FCB212075DA83EA3'))
+
+# # Get unconfirmed transactions (maximum ?limit entries) including their number
+# print(node_rpc_instance.unconfirmed_txs())
+
+# Get the validator set at the given block height. If no height is provided, it will fetch the current validator set
+print(node_rpc_instance.validators(height=10))
+
 
 # ----------- End of Node RPC Sample --------------

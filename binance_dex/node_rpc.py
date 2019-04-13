@@ -19,9 +19,14 @@ NODE_RPC_ENTRY_POINT_MAPPING = {
     'consensus_params': '/consensus_params',
     'consensus_state': '/consensus_state',
     'genesis': '/genesis',
-
-
+    'net_info': '/net_info',
+    'num_unconfirmed_txs': '/num_unconfirmed_txs',
+    'status': '/status',
+    'transaction': '/tx',
+    'unconfirmed_txs': '/unconfirmed_txs',
+    'validators': '/validators'
 }
+
 
 class BinanceChainNodeRPC(object):
     """
@@ -322,6 +327,147 @@ class BinanceChainNodeRPC(object):
         return std_ret(status=True,
                        data=self._wrapped_request().json())
 
+    def net_info(self):
+        """
+        Get network info
+
+        Sample Return:
+        {'status': True, 'result': {'jsonrpc': '2.0', 'id': '', 'result': {'listening': True,
+        'listeners': ['Listener(@a41086771245011e988520ad55ba7f5a-5f7331395e69b0f3.elb.us-east-1.amazonaws.com:27146)'],
+        'n_peers': '3', 'peers': [{'node_info': {'protocol_version': {'p2p': '7', 'block': '10', 'app': '0'},
+        'id': '381934b9b3f862d1e81e699d8e1d38929f330cef',
+        'listen_addr': 'aa13359cd244f11e988520ad55ba7f5a-c3963b80c9b991b7.elb.us-east-1.amazonaws.com:27146',
+        'network': 'Binance-Chain-Nile', 'version': '0.30.1', 'channels': '354020212223303800', 'moniker': 'data-seed-0',
+        'other': {'tx_index': 'on', 'rpc_address': 'tcp://0.0.0.0:27147'}}, 'is_outbound': True,
+        'connection_status': {'Duration': '255953150306238', 'SendMonitor': {'Active': True, 'Start':
+        '2019-04-10T06:58:59.94Z', 'Duration': '255953100000000', 'Idle': '20000000', 'Bytes': '986115376',
+        'Samples': '1724132', 'InstRate': '2238', 'CurRate': '3363', 'AvgRate': '3853', 'PeakRate': '92740',
+        'BytesRem': '0', 'TimeRem': '0', 'Progress': 0}, 'RecvMonitor': {'Active': True, 'Start': '2019-04-10T06:58:59',
+         ... ...
+        {'ID': 56, 'SendQueueCapacity': '1', 'SendQueueSize': '0', 'Priority': '5', 'RecentlySent': '0'},
+        {'ID': 0, 'SendQueueCapacity': '10', 'SendQueueSize': '0', 'Priority': '1', 'RecentlySent': '0'}]},
+        'remote_ip': '52.200.132.60'}]}}}
+        """
+        return std_ret(status=True,
+                       data=self._wrapped_request().json())
+
+    def num_unconfirmed_txs(self):
+        """
+        Get number of unconfirmed transactions
+
+        Sample Return:
+        {'status': True, 'result': {'jsonrpc': '2.0', 'id': '', 'result': {'listening': True, 'listeners':
+        ['Listener(@a41086771245011e988520ad55ba7f5a-5f7331395e69b0f3.elb.us-east-1.amazonaws.com:27146)'],
+        'n_peers': '3', 'peers': [{'node_info': {'protocol_version': {'p2p': '7', 'block': '10', 'app': '0'},
+        'id': '381934b9b3f862d1e81e699d8e1d38929f330cef', 'listen_addr': 'aa13359cd244f11e988520ad55ba7f5a-
+        c3963b80c9b991b7.elb.us-east-1.amazonaws.com:27146', 'network': 'Binance-Chain-Nile', 'version': '0.30.1',
+        'channels': '354020212223303800', 'moniker': 'data-seed-0', 'other': {'tx_index': 'on', 'rpc_address':
+        'tcp://0.0.0.0:27147'}}, 'is_outbound': True, 'connection_status': {'Duration': '256165709941240',
+        'SendMonitor': {'Active': True, 'Start': '2019-04-10T06:58:59.94Z', 'Duration': '256165720000000',
+        'Idle': '160000000', 'Bytes': '986939740', 'Samples': '1725510', 'InstRate': '778', 'CurRate': '2887',
+        'AvgRate': '3853', 'PeakRate': '92740', 'BytesRem': '0', 'TimeRem': '0', 'Progress': 0}, 'RecvMonitor':
+        {'Active': True, 'Start': '2019-04-10T06:58:59.94Z', 'Duration': '256165720000000', 'Idle': '160000000',
+        'Bytes': '5041382073', 'Samples': '1816727', 'InstRate': '7456', 'CurRate': '18329', 'AvgRate': '19680',
+        'PeakRate': '1135920', 'BytesRem': '0', 'TimeRem': '0', 'Progress': 0}, 'Channels': [{'ID': 48,
+        'SendQueueCapacity': '1', 'SendQueueSize': '0', 'Priority': '5', 'RecentlySent': '0'},
+        ... ...
+        {'ID': 35, 'SendQueueCapacity': '2', 'SendQueueSize': '0', 'Priority': '1', 'RecentlySent': '121'},
+        {'ID': 56, 'SendQueueCapacity': '1', 'SendQueueSize': '0', 'Priority': '5', 'RecentlySent': '0'},
+        {'ID': 0, 'SendQueueCapacity': '10', 'SendQueueSize': '0', 'Priority': '1', 'RecentlySent': '140'}]},
+        'remote_ip': '52.200.132.60'}]}}}
+        """
+        return std_ret(status=True,
+                       data=self._wrapped_request().json())
+
+    def status(self):
+        """
+        Get Tendermint status including node info, pubkey, latest block hash, app hash, block height and time.
+
+        Sample Return:
+        {'status': True, 'result': {'jsonrpc': '2.0', 'id': '', 'result': {'node_info': {'protocol_version':
+        {'p2p': '7', 'block': '10', 'app': '0'}, 'id': '2726550182cbc5f4618c27e49c730752a96901e8',
+        'listen_addr': 'a41086771245011e988520ad55ba7f5a-5f7331395e69b0f3.elb.us-east-1.amazonaws.com:27146',
+        'network': 'Binance-Chain-Nile', 'version': '0.30.1', 'channels': '354020212223303800', 'moniker': 'seed',
+        'other': {'tx_index': 'on', 'rpc_address': 'tcp://0.0.0.0:27147'}}, 'sync_info':
+        {'latest_block_hash': '18BCD3A2AD5DC4543F76FF91BB43666B10C5247D67F7899F60DC33D33EC14551',
+        'latest_app_hash': 'A196E89AC524C0753396BBFF07C08DDE2C9D11B09AD1E63E58D820D9C050321E',
+        'latest_block_height': '7973492', 'latest_block_time': '2019-04-13T06:12:17.508711551Z',
+        'catching_up': False}, 'validator_info': {'address': 'D618BA9C703B1E2A6BC7BAB0A0E66CE5FA32BCBA',
+        'pub_key': {'type': 'tendermint/PubKeyEd25519', 'value': 'fHM2q0J/CBzMnfH1TYtKsMQ+VmJQaq5ZsMMtmT2VoFs='},
+        'voting_power': '0'}}}}
+        """
+        return std_ret(status=True,
+                       data=self._wrapped_request().json())
+
+    def transaction(self, hash):
+        """
+         query the transaction results. nil could mean the transaction is in the mempool, invalidated,
+         or was not sent in the first place.
+
+        :param hash: Transaction hash
+
+        Sample Return:
+        {'status': True, 'result': {'jsonrpc': '2.0', 'id': '', 'result':
+        {'hash': 'C3FF309D7226768FC48B5E2D2D91719D77BAFA66DF7D3C53FCB212075DA83EA3', 'height': '7554709', 'index': 1,
+        'tx_result': {'data': 'eyJvcmRlcl9pZCI6IjFENTE4QTI1NjNCMENCOTEyQUQ3MERFQjdBMThDRDdFRDJGQkI3RDQtMTcifQ==',
+        'log': 'Msg 0: ', 'tags': [{'key': 'YWN0aW9u', 'value': 'b3JkZXJOZXc='}]},
+        'tx': '4AHwYl3uCmbObcBDChQdUYolY7DLkSrXDet6GM1+0vu31BIrMUQ1MThBMjU2M0IwQ0I5MTJBRDcwREVCN0ExOENEN0VEMkZCQjdENC0x
+        NxoMMTAwSy05QkNfQk5CIAIoATCA4I2E3csBOJBOQAEScAom61rphyEDfd0CH3JYj3jMG0VLIE8zyIjfRNNMf7OUXk8WLuEZYRISQGu/gqP4ikv
+        Xn5mY3/EZJ2wMqbTi+guJBj7DXtGtVGBAY8LiliUE2UhD1YtBdMjgQcuGExOES1Qbuck4aB+q0U8YvtcoIBAgAQ=='}}}
+        """
+        para = '?hash=0x%s' % hash
+        return std_ret(status=True,
+                       data=self._wrapped_request(para=para).json())
+
+    def unconfirmed_txs(self):
+        """
+        Get unconfirmed transactions (maximum ?limit entries) including their number.
+
+        Sample Return:
+        {'status': True, 'result': {'jsonrpc': '2.0', 'id': '', 'result': {'n_txs': '0', 'txs': []}}}
+        """
+        return std_ret(status=True,
+                       data=self._wrapped_request().json())
+
+    def validators(self, height=None):
+        """
+        Get the validator set at the given block height. If no height is provided, it will fetch the current validator set.
+
+        Sample Return:
+        {'status': True, 'result': {'jsonrpc': '2.0', 'id': '', 'result': {'block_height': '10', 'validators':
+        [{'address': '06FD60078EB4C2356137DD50036597DB267CF616', 'pub_key': {'type': 'tendermint/PubKeyEd25519',
+        'value': '4Xy+nCDNz9+HazsSl40yZKAH/KqnHEzbcB2evAMj9E8='}, 'voting_power': '100000000000', 'proposer_priority':
+        '-100000000000'}, {'address': '18E69CC672973992BB5F76D049A5B2C5DDF77436', 'pub_key': {'type':
+        'tendermint/PubKeyEd25519', 'value': 'GE57ED00xBAD+bhk1fjBrdqb0ENrJTuzyES8c5wed8k='},
+        'voting_power': '100000000000', 'proposer_priority': '-100000000000'},
+         {'address': '344C39BB8F4512D6CAB1F6AAFAC1811EF9D8AFDF', 'pub_key': {'type': 'tendermint/PubKeyEd25519',
+         'value': 'TUIK6oQ+kqDP5p2JaW3/aCd2n5y1KiSa9TfOib8qS3Q='}, 'voting_power': '100000000000',
+         'proposer_priority': '-100000000000'}, {'address': '37EF19AF29679B368D2B9E9DE3F8769B35786676',
+         'pub_key': {'type': 'tendermint/PubKeyEd25519', 'value': 'vQPen4qynigACU4VP6xvaWz6USU2ycL4BNyywsTkrtY='},
+         'voting_power': '100000000000', 'proposer_priority': '-100000000000'},
+         {'address': '62633D9DB7ED78E951F79913FDC8231AA77EC12B', 'pub_key': {'type': 'tendermint/PubKeyEd25519',
+          'value': 'j0p0oHNRiV3fNzBXuY+ubfryzSHzegY+GWAQeP5HDVM='}, 'voting_power': '100000000000',
+         'proposer_priority': '-100000000000'}, {'address': '7B343E041CA130000A8BC00C35152BD7E7740037',
+         'pub_key': {'type': 'tendermint/PubKeyEd25519', 'value': 'Sl1HU+t5+S6A7+It96yk9mak9Ev4HFNsSgnUucW2VLU='},
+         'voting_power': '100000000000', 'proposer_priority': '-100000000000'},
+         {'address': '91844D296BD8E591448EFC65FD6AD51A888D58FA', 'pub_key': {'type': 'tendermint/PubKeyEd25519',
+         'value': 'yA6avvf/Q5wQxo/o8TA97d/FJ3GMOzfYumgHRG48gno='}, 'voting_power': '100000000000',
+         'proposer_priority': '-100000000000'}, {'address': 'B3727172CE6473BC780298A2D66C12F1A14F5B2A',
+         'pub_key': {'type': 'tendermint/PubKeyEd25519', 'value': 'kUKvzGkbfMBdJsewvgyLRkGClBcXMOB584T94vpQuvw='},
+         'voting_power': '100000000000', 'proposer_priority': '-100000000000'},
+         {'address': 'B6F20C7FAA2B2F6F24518FA02B71CB5F4A09FBA3', 'pub_key': {'type': 'tendermint/PubKeyEd25519',
+         'value': 'SbKI5Ou7OigcLVRvwwJT1brwiZO25dKV+3h6WzFKKY4='}, 'voting_power': '100000000000',
+         'proposer_priority': '-100000000000'}, {'address': 'E0DD72609CC106210D1AA13936CB67B93A0AEE21',
+         'pub_key': {'type': 'tendermint/PubKeyEd25519', 'value': 'BCJDOWiPAS5kneSOJBiACS6qj2qg9PFL/Pngx2kXwLY='},
+          'voting_power': '100000000000', 'proposer_priority': '-100000000000'}, {'address':
+          'FC3108DC3814888F4187452182BC1BAF83B71BC9', 'pub_key': {'type': 'tendermint/PubKeyEd25519',
+          'value': 'QDSzfO2ooL8Tsauu7nqPk4NUIJmlVNIZuT0M5p45cOg='}, 'voting_power': '100000000000',
+          'proposer_priority': '1000000000000'}]}}}
+        """
+        para = '?height=%s' % height if height else ''
+        return std_ret(status=True,
+                       data=self._wrapped_request(para).json())
+
     def _wrapped_request(self, para=None):
 
         # Get caller function name
@@ -337,7 +483,7 @@ class BinanceChainNodeRPC(object):
         request_url = self.node_url + node_rpc_entry_point
         if para:
             request_url += para
-        print('Request URL: %s' % request_url)
+        print('Request URL: %s ... ...' % request_url)
         try:
             req_ret = requests.get(request_url)
             return req_ret
