@@ -341,6 +341,19 @@ class BinanceChainClient(object):
         else:
             return std_ret(False, 'Server Error, status_code=%s' % status_code)
 
+    def get_order_by_id(self, order_id):
+        """
+         - Summary: Get an order.
+         - Description: Gets metadata for an individual order by its ID.
+         - Rate Limit: 5 requests per IP per second.
+
+        :return:
+        """
+        url = '%sapi/v1/orders/%s' % (self.api_base_url_with_port, order_id)
+        ret = binance_api_request(url=url,
+                                  method='GET')
+        return ret
+
 
 class Types(object):
     """
