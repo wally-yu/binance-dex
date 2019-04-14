@@ -198,7 +198,6 @@ class BinanceChainClient(object):
                                   method='GET')
         return ret
 
-
     def get_account_sequence_by_address(self, address):
         """
          - Summary: Get an account sequence.
@@ -214,7 +213,6 @@ class BinanceChainClient(object):
         ret = binance_api_request(url=url,
                                   method='GET')
         return ret        
-
 
     def get_transaction(self, tx_hash):
         """
@@ -290,7 +288,6 @@ class BinanceChainClient(object):
         ret = binance_api_request(url=url,
                                   method='GET')
         return ret
-
 
     def get_klines(self, trading_pair, interval='4h', start_time=None, end_time=None, limit=300):
         """
@@ -373,6 +370,14 @@ class Types(object):
         type_transfer = 'TRANSFER'
         type_proposal = 'PROPOSAL'
         type_vote = 'VOTE'
+
+    class TxType(object):
+        msg_send = 'MsgSend'
+        new_order_msg = 'NewOrderMsg'
+        cancel_order_msg = 'CancelOrderMsg'
+        std_tx = 'StdTx'
+        pubkey_secp_256k1 = 'PubKeySecp256k1'
+        signature_secp_256k1 = 'SignatureSecp256k1'
 
     class KLine(object):
         # KLine intervals
