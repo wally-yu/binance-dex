@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+// please note the field name is the JSON name.
+message CancelOrder {
+  bytes sender = 1; // order originating address'
+  string symbol = 2; // symbol for trading pair in full name of the tokens
+  string refid = 4; // order id of the one to cancel
+}

@@ -28,7 +28,6 @@ NODE_RPC_ENTRY_POINT_MAPPING = {
 }
 
 
-
 class BinanceChainNodeRPC(object):
     """
     Node RPC Service
