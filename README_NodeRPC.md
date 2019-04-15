@@ -77,10 +77,14 @@ node_rpc_instance.XXX()
 |Unsubscribe       |&times;                    |&times;       |&bigcirc;               |
 |UnsubscribeAll    |&times;                    |&times;       |&bigcirc;               |
 |Validators        |&radic;                    |&bigcirc;     |&bigcirc;               |
+    
+    
 &ensp;     &radic;: Able to Use  &ensp;&ensp;     &bigcirc;: Unfinished   &ensp;&ensp;    &ominus;:Unstable &ensp;&ensp;  &times;: Official Unsupported 
 
 ### Referance
-The following document list the funcs in `class BinanceChainNodeRPC`.
+The following document list the funcs in `class BinanceChainNodeRPC`. The subheads will appear like that: 
+ `RPC service func`  ->  `raw RPC service`, which declare the mapping relationships between Python RPC Package service
+ function and raw RPC service type.
 
 #### `get_list()`  -> `Get the list`
 - Summary: Show a list of available endpoints.
