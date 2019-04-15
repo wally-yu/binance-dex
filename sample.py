@@ -176,57 +176,60 @@ from binance_dex.node_rpc import BinanceChainNodeRPC
 # Create Instance
 
 # # OPTION 1: using existing RPC node
-# node_rpc_instance = BinanceChainNodeRPC(is_test_net=True,
-#                                         node_rpc_url=None)
+node_rpc_instance = BinanceChainNodeRPC(is_test_net=True,
+                                        node_rpc_url=None)
 
-# OPTION 2: using your own node
-node_rpc_instance = BinanceChainNodeRPC(node_rpc_url='https://seed-pre-s3.binance.org')
+# #OPTION 2: using your own node
+# node_rpc_instance = BinanceChainNodeRPC(node_rpc_url='https://seed-pre-s3.binance.org')
 
 # # Get available RPC endpoints (HTML format)
 # print(node_rpc_instance.get_list())
-
+#
 # # Get info about the application
 # print(node_rpc_instance.abci_info())
-
+#
 # # Get block at a given height. If no height is provided, it will fetch the latest block
 # print(node_rpc_instance.block(height=10))
-
+#
 # # gets ABCIResults at a given height
 # print(node_rpc_instance.block_results(height=100))
-
+#
 # # Broadcast Transaction (Async),
 # print(node_rpc_instance.broadcast_tx_async(tx_id='123'))
-
+#
 # # Broadcast Transaction Sync,
 # print(node_rpc_instance.broadcast_tx_sync(tx_id='123'))
-
+#
 # # Broadcast Trsaction Commit
 # print(node_rpc_instance.broadcast_tx_commit(tx_id='123'))
-
+#
 # # Get block commit at a given height.
 # print(node_rpc_instance.get_commit(height=10))
-
+#
 # # Get the consensus parameters at the given block height
 # print(node_rpc_instance.consensus_params(height=100))
-
+#
 # # ConsensusState returns a concise summary of the consensus state.
 # print(node_rpc_instance.consensus_state())
-
+#
 # # Get genesis file
 # print(node_rpc_instance.genesis())
-
+#
 # # Get network info
 # print(node_rpc_instance.net_info())
-
+#
+# # Get number of unconfirmed transactions
+# print(node_rpc_instance.num_unconfirmed_txs())
+#
 # # Get Tendermint status including node info, pubkey, latest block hash, app hash, block height and time
 # print(node_rpc_instance.status())
-
+#
 # # Query the transaction results by Hash
 # print(node_rpc_instance.transaction(hash='C3FF309D7226768FC48B5E2D2D91719D77BAFA66DF7D3C53FCB212075DA83EA3'))
-
+#
 # # Get unconfirmed transactions (maximum ?limit entries) including their number
 # print(node_rpc_instance.unconfirmed_txs())
-
+#
 # # Get the validator set at the given block height. If no height is provided, it will fetch the current validator set
 # print(node_rpc_instance.validators(height=10))
 

@@ -187,7 +187,7 @@ class BinanceChainNodeRPC(object):
 
     def broadcast_tx_sync(self, tx_id):
         """
-        Broadcase Transaction, teturns with the response from CheckTx.
+        Broadcase Transaction, returns with the response from CheckTx.
         :param tx_id: Transaction id
 
         Sample Return:
