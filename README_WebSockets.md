@@ -100,7 +100,7 @@ Success sample result:
                                         callback_function=customized_msg_handler)
 ```
 - Account sample return (notice `"stream" == "accounts"`):
-```json
+```python
 {
     "stream": "accounts",
     "data": {
@@ -122,7 +122,7 @@ Success sample result:
 ```
 
 - Transfer sample return (notice `"stream" == "transfers"`):
-```json
+```python
 {
     "stream": "transfers",
     "data": {
@@ -142,7 +142,7 @@ Success sample result:
 ```
 
 - Orders sample return (notice `"stream" == "orders"`):
-```json
+```python
 {
     "stream": "orders",                                       
     "data": [{                                                
@@ -491,6 +491,7 @@ Success sample result:
 ```python
 > socket_instance.fetch_block_height_updates(one_off=False, 
                                              callback_function=customized_msg_handler)
+
 {   
     "stream": "blockheight",
     "data": {
