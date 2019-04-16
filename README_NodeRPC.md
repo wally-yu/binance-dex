@@ -1,6 +1,6 @@
 ## NodeRPC Lib 
 
-The Binance DEX Python Crypto Package provides method to ues Node RPC service.
+The Binance DEX Python NodeRPC Package provides method to ues Node RPC service.
 Using RPC, you may perform low-level operations like executing ABCI queries,
 viewing network/consensus state or broadcasting a transaction.    
 Official suggested 3 methodologies for RPC:
@@ -98,7 +98,7 @@ Success sample result:
 > node_rpc_instance.get_list()
 
 {'status': True, 
-'result': 
+ 'result': 
     '<html>
         <body><br>
             Available endpoints:<br>
@@ -134,7 +134,7 @@ Success sample result:
 
 
 #### `abci_info()`  -> `ABCIInfo`
-- Summary: Get Get some info about the application.
+- Summary: Get some info about the application.
 - Description: Get some info about the application.
 - Destination: NA.
 - Rate Limit: NA.
@@ -145,15 +145,19 @@ Success sample result:
 ```python
 > node_rpc_instance.abci_info()
 
-{'status': True, 
- 'result': {'jsonrpc': '2.0', 
-            'id': '', 
-            'result': {'response': {'data': 'BNBChain',
-                                    'last_block_height': '7958684', 
-                                    'last_block_app_hash': 'KI9O19xiqBUitt93GThsvYMs8UJ5fO6OcmKw+q5HQM8='
-                                    }
-                        }
+{
+    'status': True, 
+    'result': {
+        'jsonrpc': '2.0', 
+        'id': '', 
+        'result': {
+            'response': {
+                'data': 'BNBChain',
+                'last_block_height': '7958684', 
+                'last_block_app_hash': 'KI9O19xiqBUitt93GThsvYMs8UJ5fO6OcmKw+q5HQM8='
             }
+        }
+    }
 }
 ```
 

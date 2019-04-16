@@ -14,6 +14,11 @@ This python package will provide all methods available as from binance official 
 - [ ] CLI
 - [x] WebSocket
 - [x] JSONRPC
+## Environment:
+
+- [x] Python3.5 + MacOs
+- [x] Python3.5 + Windows10
+- [ ] Python2.7 + 
 
 ## Sample Usage:
 
@@ -59,7 +64,7 @@ Expected to get results as:
 |trades         |&radic;    |&radic;    |           |           |
 |transactions   |&radic;    |&radic;    |           |           |
 
-####Network requirement:
+#### Network requirement:
 
 |               |API        |WebSockets |JSONRPC    |Crypto     |
 |:---:          |:---:      |:---:      |:---:      |:---:      |

@@ -357,7 +357,7 @@ class BinanceChainClient(object):
 
 class Types(object):
     """
-    In case of mis-spell or other wrong strings, let's pre-define some strings here to comsume
+    In case of mis-spell or other wrong strings, let's pre-define some strings here to consume
     """
 
     def __init__(self):
