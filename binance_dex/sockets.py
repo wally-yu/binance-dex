@@ -146,7 +146,11 @@ class BinanceChainSocket(object):
             else:
                 postfix_url = '%s@miniTicker' % trading_pair
         else:
-            postfix_url = '$all@allTickers'
+            if is_full_data:
+                postfix_url = '$all@allTickers'
+            else:
+                postfix_url = '$all@allMiniTickers'
+
         return self._standard_binance_change_socket_handler(one_off=one_off,
                                                             callback_function=callback_function,
                                                             parameter=postfix_url)
