@@ -1,5 +1,5 @@
 ## Binance DEX / Binance Chain Python Package
-![image](https://github.com/wally-yu/binance-dex/blob/master/binance-chain-python.jpg)
+<img src="https://github.com/wally-yu/binance-dex/blob/master/binance-chain-python.jpg" width=375px height=108.75px>
 
 ## Introudction:
 
