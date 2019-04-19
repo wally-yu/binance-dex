@@ -6,11 +6,11 @@ message Send {
     int64 amount = 2 ;
   }
   message Input {
-    bytes address = 1;
+    string address = 1;
     repeated Token coins = 2    ;
   }
   message Output {
-    bytes address = 1;
+    string address = 1;
     repeated Token coins = 2    ;
   }
   repeated Input inputs = 1;
