@@ -184,11 +184,8 @@ Request URL: https://seed-pre-s3.binance.org:443/num_unconfirmed_txs ... ...
 |:---:          |:---:      |:---:      |:---:      |:---:      |
 |Need Network   |&radic;    |&radic;    |&radic;    |    X       |
 
-#### Note:
-**This package development just getting started, feel free to join if you have interest**
+#### Join us:
+You are always welcomed to join us: leave your suggestions / or submit your codes
 
 #### License:
-This Binance Chain Python Package will stick to the MIT license permanently.
-
-##
-#### Book to read, put on readme: https://www.fullstackpython.com/websockets.html
+We promise will stick to MIT license permanently.
