@@ -1,6 +1,7 @@
 ## Binance DEX / Binance Chain Python Package
 <img src="https://github.com/wally-yu/binance-dex/blob/master/binance-chain-python.jpg" width=375px height=108.75px>
 
+
 ## Introudction:
 
 Ways to connect to Binance DEX are:
@@ -181,7 +182,7 @@ Request URL: https://seed-pre-s3.binance.org:443/num_unconfirmed_txs ... ...
 
 |               |API        |WebSockets |JSONRPC    |Crypto     |
 |:---:          |:---:      |:---:      |:---:      |:---:      |
-|Need Network   |&radic;    |&radic;    |&radic;    |           |
+|Need Network   |&radic;    |&radic;    |&radic;    |    X       |
 
 #### Note:
 **This package development just getting started, feel free to join if you have interest**
