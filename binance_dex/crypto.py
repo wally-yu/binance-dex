@@ -34,7 +34,7 @@ class BinanceChainCrypto(object):
         ret['mnemonic'] = mnemonic
         return ret
 
-    def generate_key_from_mnemoic(self, mnemonic):
+    def generate_key_from_mnemonic(self, mnemonic):
         """
         Generate Private Key, Public Address from mnemonic words
 

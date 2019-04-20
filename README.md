@@ -159,30 +159,33 @@ Request URL: https://seed-pre-s3.binance.org:443/num_unconfirmed_txs ... ...
 ---
 
 #### Service availability:
-|Service Name   |API        |WebSockets |JSONRPC    |Crypto     |
+|Service Type   |API        |WebSockets |JSONRPC    |Crypto     |
 |---            |:---:      |:---:      |:---:      |:---:      |
-|time           |&radic;    |&radic;    |           |           |
 |node-info      |&radic;    |           |           |           |
-|validators     |&radic;    |           |           |           | 
+|validators     |&radic;    |           |&radic;    |           | 
 |peers          |&radic;    |           |           |           | 
 |account        |&radic;    |&radic;    |           |           |
-|tx             |&radic;    |           |           |           |
+|transaction(s) |&radic;    |           |&radic;    |           |
 |tokens         |&radic;    |           |           |           |
 |markets        |&radic;    |           |           |           |
 |fees           |&radic;    |           |           |           |
-|depth          |&radic;    |&radic;    |           |           |
-|broadcast      |&radic;    |           |           |           |
-|klines         |&radic;    |           |           |           |
+|book-depth     |&radic;    |&radic;    |&radic;    |           |
+|broadcast      |&radic;    |           |&radic;    |           |
+|klines         |&radic;    |&radic;    |           |           |
 |orders         |&radic;    |&radic;    |           |           |
 |ticker         |&radic;    |&radic;    |           |           |
 |trades         |&radic;    |&radic;    |           |           |
-|transactions   |&radic;    |&radic;    |           |           |
-
+|transfer       |&radic;    |&radic;    |           |           |
+|block          |           |&radic;    |&radic;    |           |
+|(un)subscribe  |           |&radic;    |&radic;    |           |
+|key-derivation |           |           |           |&radic;    |
+|mnemonic words |           |           |           |&radic;    |
+   
 #### Network requirement:
 
 |               |API        |WebSockets |JSONRPC    |Crypto     |
 |:---:          |:---:      |:---:      |:---:      |:---:      |
-|Need Network   |&radic;    |&radic;    |&radic;    |    X       |
+|Need Network   |&radic;    |&radic;    |&radic;    |    X      |
 
 #### Join us:
 You are always welcomed to join us: leave your suggestions / or submit your codes

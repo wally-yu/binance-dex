@@ -87,7 +87,7 @@ crypto_instance = BinanceChainCrypto(is_test_net=IS_TEST_NET)
 #
 # # Generate Private Key, Public Address from mnemonic
 # mnemonic_words = crypto_instance.generate_mnemonic()
-# key = crypto_instance.generate_key_from_mnemoic(mnemonic_words)
+# key = crypto_instance.generate_key_from_mnemonic(mnemonic_words)
 # print("Mnemonic Words: %s" % mnemonic_words)
 # print("Keys: %s" % key)
 #

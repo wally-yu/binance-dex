@@ -35,6 +35,34 @@ If `any error` occurred, message return will be：
  {'status': False, 'message': error_type}
   ```
 
+#### Service availability:
+|Service Name                | API                       |
+|---                         |:---:                      |
+|time                        |&radic;                    |
+|node-info                   |&radic;                    |
+|validators                  |&radic;                    |
+|peers                       |&radic;                    |
+|account/{address}           |&radic;                    |
+|account/{address}/sequence  |&radic;                    |
+|tx{hash}                    |&radic;                    |
+|tokens                      |&radic;                    |
+|markets                     |&radic;                    |
+|fees                        |&radic;                    |
+|depth                       |&radic;                    |
+|broadcast                   |&bigcirc;                  |
+|klines                      |&radic;                    |
+|orders/closed               |&bigcirc;                  |
+|orders/open                 |&bigcirc;                  |
+|orders/{id}                 |&radic;                    |
+|ticker/24hr                 |&bigcirc;                  |
+|trades                      |&bigcirc;                  |
+|block-exchange-fee          |&radic;                    |
+|transactions                |&bigcirc;                  |
+      
+&ensp;     &radic;: Able to Use  &ensp;&ensp;     &bigcirc;: Unfinished   &ensp;&ensp;    &ominus;:Unstable &ensp;&ensp;  &times;: Official Unsupported 
+
+
+
 ### Referance
 The following document subhead will appear like that: 
  `API service func`  ->  `raw HTTP API type`, which declare the mapping relationships between Python API Package service
