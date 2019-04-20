@@ -354,6 +354,46 @@ class BinanceChainClient(object):
                                   method='GET')
         return ret
 
+    def get_order_open(self, address, symbol = None, limit = 500, offset = 0, total = 0):
+        """
+         - Summary: Get open orders.
+         - Description: Gets open orders for a given address.
+         - Rate Limit: 5 requests per IP per second.
+
+        :return:
+        """
+        url = '%sapi/v1/orders/open?address=%s&limit=%s&offset=%s&total=%s' % \
+                (self.api_base_url_with_port, address, limit, offset, total)
+        url = url + '&symbol=%s' % symbol if symbol else url
+        ret = binance_api_request(url=url,
+                                  method='GET')
+        return ret
+    
+    def get_order_closed(self, address, end = None, side = None, start = None,
+                         status = None, symbol = None, limit = 500, offset = 0, total = 0):
+        """
+         - Summary: Get closed orders.
+         - Description: Gets closed (filled and cancelled) orders for a given address.
+         - Query Window: Default query window is latest 7 days; The maximum start - end query window is 3 months.
+         - Rate Limit: 5 requests per IP per second.
+
+        :return:
+        """
+
+        if status and status not in api_types_instance.allowed_order_status:
+            return std_ret(False, 'Status should be in: %s' % api_types_instance.allowed_order_status)
+
+        url = '%sapi/v1/orders/closed?address=%s&limit=%s&offset=%s&total=%s' % \
+                (self.api_base_url_with_port, address, limit, offset, total)
+        url = url + '&symbol=%s' % symbol if symbol else url
+        url = url + '&start=%s' % start if start else url
+        url = url + '&end=%s' % end if end else url
+        url = url + '&side=%s' % side if side else url
+        url = url + '&status=%s' % status if status else url
+        ret = binance_api_request(url=url,
+                                  method='GET')
+        return ret
+
 
 class Types(object):
     """
@@ -367,6 +407,8 @@ class Types(object):
                                        '1d', '3d', '1w', '1M']
 
         self.allowed_depth_limit = [5, 10, 20, 50, 100, 500, 1000]
+
+        self.allowed_order_status = ['Ack', 'PartialFill', 'IocNoFill', 'FullyFill', 'Canceled', 'Expired', 'FailedBlocking', 'FailedMatching']
 
     class Transactions(object):
 
