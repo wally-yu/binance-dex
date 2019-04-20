@@ -394,6 +394,20 @@ class BinanceChainClient(object):
                                   method='GET')
         return ret
 
+    def post_broadcase(self, transaction, sync = None):
+        """
+         - Summary: Get closed orders.
+         - Description: Gets closed (filled and cancelled) orders for a given address.
+         - Query Window: Default query window is latest 7 days; The maximum start - end query window is 3 months.
+         - Rate Limit: 5 requests per IP per second.
+
+        :return:
+        """
+        url = '%sapi/v1/broadcast' % (self.api_base_url_with_port)
+        url = url + '?sync=%s' % sync if sync else url
+        ret = binance_api_request(url=url,
+                                  method='POST', body=transaction)
+        return ret
 
 class Types(object):
     """
