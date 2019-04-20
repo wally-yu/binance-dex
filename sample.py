@@ -158,7 +158,7 @@ socket_instance = BinanceChainSocket(IS_TEST_NET)
 #                                     interval=kline_intervals.interval_1min,
 #                                     callback_function=customized_msg_handler)
 
-# 24hr Ticker statistics for a single symbol are pushed every second
+# # 24hr Ticker statistics for a single symbol are pushed every second
 # socket_instance.fetch_ticker_streams(trading_pair='100K-9BC_BNB',
 #                                      is_full_data=True,
 #                                      one_off=False,
@@ -218,7 +218,7 @@ node_rpc_instance = BinanceChainNodeRPC(is_test_net=True,
 # # Get network info
 # print(node_rpc_instance.net_info())
 #
-# # Get number of unconfirmed transactions
+# Get number of unconfirmed transactions
 # print(node_rpc_instance.num_unconfirmed_txs())
 #
 # # Get Tendermint status including node info, pubkey, latest block hash, app hash, block height and time

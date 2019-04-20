@@ -16,12 +16,15 @@ This python package will provide all methods available as from binance official 
 - [x] WebSocket
 - [x] JSONRPC
 ## Environment:
-Due to time limitation, below environment are tested.
+Due to time limitation, we didn't test too much for different python version + os environment combinations, below are what we tested so far:
 - [x] Python3.5 + MacOs
 - [x] Python3.5 + Windows10
-- we are not sure if there would be any compatibility issues for python2.7, let us know if you encounter any issue
 
-## Sample Usage:
+we are not sure if there would be any compatibility issues for python2.7, let us know if you encounter any issue.
+
+BTW, we do suggest to use Virtual Environment.
+
+## Python SDK Sample Usage:
 
 #### Install package:
 
@@ -156,27 +159,233 @@ Request URL: https://seed-pre-s3.binance.org:443/num_unconfirmed_txs ... ...
 ```
 [++Find more Node RPC Doc by clicking this link++](https://github.com/wally-yu/binance-dex/blob/master/README_NodeRPC.md)
 
----
 
-#### Service availability:
-|Service Name   |API        |WebSockets |JSONRPC    |Crypto     |
-|---            |:---:      |:---:      |:---:      |:---:      |
-|time           |&radic;    |&radic;    |           |           |
-|node-info      |&radic;    |           |           |           |
-|validators     |&radic;    |           |           |           | 
-|peers          |&radic;    |           |           |           | 
-|account        |&radic;    |&radic;    |           |           |
-|tx             |&radic;    |           |           |           |
-|tokens         |&radic;    |           |           |           |
-|markets        |&radic;    |           |           |           |
-|fees           |&radic;    |           |           |           |
-|depth          |&radic;    |&radic;    |           |           |
-|broadcast      |&radic;    |           |           |           |
-|klines         |&radic;    |           |           |           |
-|orders         |&radic;    |&radic;    |           |           |
-|ticker         |&radic;    |&radic;    |           |           |
-|trades         |&radic;    |&radic;    |           |           |
-|transactions   |&radic;    |&radic;    |           |           |
+
+## SDk Overview
+As you might noticed, this SDK is composed with 4 parts:
+- API
+- WebSockets
+- Node RPC
+- Crypto
+
+#### Description
+|               |Description|
+|:---:          |:---:      |:---:      |:---:      |:---:      |
+|**API**    | HTTP API provides access to a Binance Chain node deployment and market data services|
+|**Web Sockets**  |The DEX exposes several data streams over standard WebSocket connections, which can be consumed by modern web browsers and server-side WebSocket libraries|
+|**Node RPC**   | May be used to interact with a node directly over HTTP or websockets. Using RPC, you may perform low-level operations like executing ABCI queries, viewing network/consensus state or broadcasting a transaction|
+|**Crypto**   |Crypto related functions (such as key managment)|
+
+#### Availability:
+
+<html>
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th>API</th>
+            <th>WebSockets</th>
+            <th>Node RPC</th>
+            <th>Crypto</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan=3>Key</td>
+            <td>generate mnemonic</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>&radic;</td>
+        </tr>
+        <tr>
+            <td>generate key</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>&radic;</td>
+        </tr>
+        <tr>
+            <td>generate keys</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>&radic;</td>
+        </tr>
+        <tr>
+            <td rowspan=6>Chain</td>
+            <td>get block height</td>
+            <td>&radic;</td>
+            <td>&radic;</td>
+            <td></td>
+            <td>&radic;</td>
+        </tr>
+        <tr>
+            <td>get block info</td>
+            <td></td>
+            <td></td>
+            <td>&radic;</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>get consensue info</td>
+            <td></td>
+            <td></td>
+            <td>&radic;</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>get network info</td>
+            <td></td>
+            <td></td>
+            <td>&radic;</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>get unconfirmed tx</td>
+            <td></td>
+            <td></td>
+            <td>&radic;</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>get Tendermint status</td>
+            <td></td>
+            <td></td>
+            <td>&radic;</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td rowspan=6>Node</td>
+            <td>get block time</td>
+            <td>&radic;</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>get node info</td>
+            <td>&radic;</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>get validators</td>
+            <td>&radic;</td>
+            <td></td>
+            <td>&radic;</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>get peers</td>
+            <td>&radic;</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>get end points</td>
+            <td></td>
+            <td></td>
+            <td>&radic;</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>get abci info</td>
+            <td></td>
+            <td></td>
+            <td>&radic;</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td rowspan=5>Market</td>
+            <td>get listing tokens</td>
+            <td>&radic;</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>get trading pairs</td>
+            <td>&radic;</td>
+            <td>&radic;</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>get depth</td>
+            <td>&radic;</td>
+            <td>&radic;</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>get klines</td>
+            <td>&radic;</td>
+            <td>&radic;</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>get updated ticker statistics</td>
+            <td></td>
+            <td>&radic;</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td rowspan=3>Account</td>
+            <td>get account balance</td>
+            <td>&radic;</td>
+            <td>&radic;</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>get account sequence</td>
+            <td>&radic;</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>get account orders</td>
+            <td></td>
+            <td>&radic;</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td rowspan=2>Transaction</td>
+            <td>get transaction info</td>
+            <td>&radic;</td>
+            <td></td>
+            <td>&radic;</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>broadcast transaction</td>
+            <td>&radic;</td>
+            <td></td>
+            <td>&radic;</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td rowspan=2>Others</td>
+            <td>view chain fees</td>
+            <td>&radic;</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        
+    </tbody>
+</table>
+</html>
+
 
 #### Network requirement:
 
@@ -184,8 +393,8 @@ Request URL: https://seed-pre-s3.binance.org:443/num_unconfirmed_txs ... ...
 |:---:          |:---:      |:---:      |:---:      |:---:      |
 |Need Network   |&radic;    |&radic;    |&radic;    |    X       |
 
-#### Join us:
-You are always welcomed to join us: leave your suggestions / or submit your codes
+## Join us:
+You are always welcomed to join us! Leave your suggestions / or submit your codes
 
-#### License:
+## License:
 We promise will stick to MIT license permanently.
