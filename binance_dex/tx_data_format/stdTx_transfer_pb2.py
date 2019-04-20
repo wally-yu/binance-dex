@@ -13,8 +13,8 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-from binance_dex.tx_data_format import stdSignature_pb2 as stdSignature__pb2
-from binance_dex.tx_data_format import msg_transfer_pb2 as msg__transfer__pb2
+import binance_dex.tx_data_format.stdSignature_pb2 as stdSignature__pb2
+import binance_dex.tx_data_format.msg_transfer_pb2 as msg__transfer__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x14stdTx_transfer.proto\x1a\x12stdSignature.proto\x1a\x12msg_transfer.proto\"j\n\x05StdTx\x12\x12\n\x03msg\x18\x01 \x03(\x0b\x32\x05.Send\x12!\n\nsignatures\x18\x02 \x03(\x0b\x32\r.StdSignature\x12\x0c\n\x04memo\x18\x03 \x01(\t\x12\x0e\n\x06source\x18\x04 \x01(\x03\x12\x0c\n\x04\x64\x61ta\x18\x05 \x01(\x0c\x62\x06proto3')
+  serialized_pb=_b('\n\x14stdTx_transfer.proto\x1a\x12stdSignature.proto\x1a\x12msg_transfer.proto\"j\n\x05StdTx\x12\x12\n\x03msg\x18\x01 \x03(\x0b\x32\x05.Send\x12!\n\nsignatures\x18\x02 \x03(\x0b\x32\r.StdSignature\x12\x0c\n\x04memo\x18\x03 \x01(\t\x12\x0e\n\x06source\x18\x04 \x01(\x03\x12\x0c\n\x04\x64\x61ta\x18\x05 \x01(\tb\x06proto3')
   ,
   dependencies=[stdSignature__pb2.DESCRIPTOR,msg__transfer__pb2.DESCRIPTOR,])
 
@@ -66,8 +66,8 @@ _STDTX = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='data', full_name='StdTx.data', index=4,
-      number=5, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b(""),
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),

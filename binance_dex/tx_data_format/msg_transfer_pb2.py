@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x12msg_transfer.proto\"\xd7\x01\n\x04Send\x12\x1b\n\x06inputs\x18\x01 \x03(\x0b\x32\x0b.Send.Input\x12\x1d\n\x07outputs\x18\x02 \x03(\x0b\x32\x0c.Send.Output\x1a&\n\x05Token\x12\r\n\x05\x64\x65nom\x18\x01 \x01(\t\x12\x0e\n\x06\x61mount\x18\x02 \x01(\x03\x1a\x34\n\x05Input\x12\x0f\n\x07\x61\x64\x64ress\x18\x01 \x01(\x0c\x12\x1a\n\x05\x63oins\x18\x02 \x03(\x0b\x32\x0b.Send.Token\x1a\x35\n\x06Output\x12\x0f\n\x07\x61\x64\x64ress\x18\x01 \x01(\x0c\x12\x1a\n\x05\x63oins\x18\x02 \x03(\x0b\x32\x0b.Send.Tokenb\x06proto3')
+  serialized_pb=_b('\n\x12msg_transfer.proto\"\xd7\x01\n\x04Send\x12\x1b\n\x06inputs\x18\x01 \x03(\x0b\x32\x0b.Send.Input\x12\x1d\n\x07outputs\x18\x02 \x03(\x0b\x32\x0c.Send.Output\x1a&\n\x05Token\x12\r\n\x05\x64\x65nom\x18\x01 \x01(\t\x12\x0e\n\x06\x61mount\x18\x02 \x01(\x03\x1a\x34\n\x05Input\x12\x0f\n\x07\x61\x64\x64ress\x18\x01 \x01(\t\x12\x1a\n\x05\x63oins\x18\x02 \x03(\x0b\x32\x0b.Send.Token\x1a\x35\n\x06Output\x12\x0f\n\x07\x61\x64\x64ress\x18\x01 \x01(\t\x12\x1a\n\x05\x63oins\x18\x02 \x03(\x0b\x32\x0b.Send.Tokenb\x06proto3')
 )
 
 
@@ -72,8 +72,8 @@ _SEND_INPUT = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='address', full_name='Send.Input.address', index=0,
-      number=1, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b(""),
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -109,8 +109,8 @@ _SEND_OUTPUT = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='address', full_name='Send.Output.address', index=0,
-      number=1, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b(""),
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),

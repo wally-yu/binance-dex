@@ -132,7 +132,7 @@ socket_instance = BinanceChainSocket(IS_TEST_NET)
 # # <--- Here we go --->
 
 # Fetch Account Updates, Including: Orders, Transfer, Balance
-# socket_instance.fetch_account_updates(user_address='tbnb1r4gc5ftrkr9ez2khph4h5xxd0mf0hd75jf06gw',
+# socket_instance.fetch_account_updates(user_address='tbnb1fn9z9vn4f44ekz0a3pf80dcy2wh4d5988phjds',
 #                                       one_off=False,
 #                                       callback_function=customized_msg_handler)
 
@@ -155,7 +155,7 @@ socket_instance = BinanceChainSocket(IS_TEST_NET)
 # from binance_dex.api import api_types_instance
 # kline_intervals = api_types_instance.KLine()
 # socket_instance.fetch_kline_updates(trading_pair='100K-9BC_BNB',
-#                                     interval=kline_intervals.interval_1hour,
+#                                     interval=kline_intervals.interval_1min,
 #                                     callback_function=customized_msg_handler)
 
 # 24hr Ticker statistics for a single symbol are pushed every second
