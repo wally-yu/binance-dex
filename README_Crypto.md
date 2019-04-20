@@ -22,6 +22,18 @@ address `prefix = 'tbnb'`, otherwise `prefix = 'bnb'`  (***???UNFINISHED***)
 crypto_instance.generate_XXX()
 ```
 
+#### Service availability:
+|Service Name                               | WebSockets                |
+|---                                        |:---:                      |
+|generate_mnemonic                          |&radic;                    |
+|generate_key                               |&radic;                    |
+|generate_key_from_mnemonic                 |&radic;                    |
+|generate_keys_from_mnemonic                |&radic;                    |
+           
+&ensp;     &radic;: Able to Use  &ensp;&ensp;     &bigcirc;: Unfinished   &ensp;&ensp;    &ominus;:Unstable &ensp;&ensp;  &times;: Official Unsupported 
+
+
+
 ### Referance
 The following document list the funcs in `class BinanceChainCrypto`.
 
@@ -44,7 +56,7 @@ pilot robust brand public boat define battle
  
 Brief algorithm flow chart refer to bip-39:  (***???PIC COPYRIGHT PROBLEM***)
 
-![MnemonicWords](http://ppst62hmr.bkt.clouddn.com/Mnemonic%20Words.png)
+![MnemonicWords](https://github.com/wally-yu/binance-dex/blob/master/mnemonics-words-sample.jpg)
 
 
 The mnemonic must encode entropy in a multiple of 32 bits.
@@ -89,9 +101,8 @@ Sample Return :
  }
 ```
 
-![MnemonicToSeed](http://ppst62hmr.bkt.clouddn.com/Mnemonic%20to%20Seed.png)   
+![MnemonicToSeed](https://github.com/wally-yu/binance-dex/blob/master/generate_keys_from_mnemonic_sample.jpg)   
     
-![SeedToMaster](http://ppst62hmr.bkt.clouddn.com/Seed%20to%20Master.png)
 
 #### `generate_key_from_mnemoic()`
 - Generate Private Key, Public Address from mnemonic words.
@@ -100,7 +111,7 @@ Sample Return :
 
 ```python
 > mnemonic_words = crypto_instance.generate_mnemonic()
-> crypto_instance.generate_key_from_mnemoic(mnemonic_words)
+> crypto_instance.generate_key_from_mnemonic(mnemonic_words)
 
 {'private_key': '0225fb7752873b93f3bf9afc8a3bdd35e9052e04e21ffd91e42d8aa45a542459',
  'public_address': 'bnb1ejk8eah9ct5rgl3k4s4kqc3udf7jy9qvzjw56m'

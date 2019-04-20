@@ -104,13 +104,13 @@ Success sample result:
 {
     "stream": "accounts",
     "data": {
-        "e": "outboundAccountInfo",         // Event type
-        "E": 7364509,                       // Event height
-        "B": [{                             // Balances array
-            "a": "BNB",                     // Asset
-            "f": "1371.08750000",           // Free amount
-            "r": "0.00000000",              // Locked amount
-            "l": "0.00000000"               // Frozen amount
+        "e": "outboundAccountInfo",         # Event type
+        "E": 7364509,                       # Event height
+        "B": [{                             # Balances array
+            "a": "BNB",                     # Asset
+            "f": "1371.08750000",           # Free amount
+            "r": "0.00000000",              # Locked amount
+            "l": "0.00000000"               # Frozen amount
         }, {
             "a": "DEX.B-C72",
             "f": "999999791.11200000",
@@ -126,15 +126,15 @@ Success sample result:
 {
     "stream": "transfers",
     "data": {
-        "e": "outboundTransferInfo",                                                // Event type
-        "E": 7364509,                                                               // Event height
-        "H": "08B71F862CDB820AF499D6E4FB34494CA163EBDADD5DC5D0A61EB1A0725BB4F4",    // Transaction hash
-        "f": "tbnb1r4gc5ftrkr9ez2khph4h5xxd0mf0hd75jf06gw",                         // From addr
+        "e": "outboundTransferInfo",                                                # Event type
+        "E": 7364509,                                                               # Event height
+        "H": "08B71F862CDB820AF499D6E4FB34494CA163EBDADD5DC5D0A61EB1A0725BB4F4",    # Transaction hash
+        "f": "tbnb1r4gc5ftrkr9ez2khph4h5xxd0mf0hd75jf06gw",                         # From addr
         "t": [{
-            "o": "tbnb1fn9z9vn4f44ekz0a3pf80dcy2wh4d5988phjds",                     // To addr
-            "c": [{                                                                 // Coins
-                "a": "DEX.B-C72",                                                   // Asset
-                "A": "8.88800000"                                                   // Amount
+            "o": "tbnb1fn9z9vn4f44ekz0a3pf80dcy2wh4d5988phjds",                     # To addr
+            "c": [{                                                                 # Coins
+                "a": "DEX.B-C72",                                                   # Asset
+                "A": "8.88800000"                                                   # Amount
             }]
         }]
     }
@@ -146,26 +146,26 @@ Success sample result:
 {
     "stream": "orders",                                       
     "data": [{                                                
-        "e": "executionReport",                               // Event type
-        "E": 7366949,                                         // Event height 
-        "s": "100K-9BC_BNB",                                  // Symbol
-        "S": 1,                                               // Side, 1 for Buy, 2 for sell 
-        "o": 2,                                               // Order type, 2 for LIMIT (only) 
-        "f": 1,                                               // Time in force,  1 for Good Till Expire (GTE); 3 for Immediate Or Cancel (IOC)
-        "q": "0.00001500",                                    // Order quantity
-        "p": "66666.00000000",                                // Order price
-        "x": "NEW",                                           // Current execution type
-        "X": "Ack",                                           // Current order status, possible values Ack, Canceled, Expired, IocNoFill, PartialFill, FullyFill, FailedBlocking, FailedMatching, Unknown
-        "i": "1D518A2563B0CB912AD70DEB7A18CD7ED2FBB7D4-10",   // Order ID
-        "l": "0.00000000",                                    // Last executed quantity
-        "L": "0.00000000",                                    // Cumulative filled quantity
-        "z": "0.00001500",                                    // Last executed price
-        "n": "",                                              // Commission amount for all user trades within a given block. Fees will be displayed with each order but will be charged once.
-                                                              // Fee can be composed of a single symbol, ex: "10000BNB"
-                                                              // or multiple symbols if the available "BNB" balance is not enough to cover the whole fees, ex: "1.00000000BNB;0.00001000BTC;0.00050000ETH"
-        "T": 1554890366040313451,                             // Transaction time
-        "t": "",                                              // Trade ID
-        "O": 1554890366040313451                              // Order creation time
+        "e": "executionReport",                               # Event type
+        "E": 7366949,                                         # Event height 
+        "s": "100K-9BC_BNB",                                  # Symbol
+        "S": 1,                                               # Side, 1 for Buy, 2 for sell 
+        "o": 2,                                               # Order type, 2 for LIMIT (only) 
+        "f": 1,                                               # Time in force,  1 for Good Till Expire (GTE); 3 for Immediate Or Cancel (IOC)
+        "q": "0.00001500",                                    # Order quantity
+        "p": "66666.00000000",                                # Order price
+        "x": "NEW",                                           # Current execution type
+        "X": "Ack",                                           # Current order status, possible values Ack, Canceled, Expired, IocNoFill, PartialFill, FullyFill, FailedBlocking, FailedMatching, Unknown
+        "i": "1D518A2563B0CB912AD70DEB7A18CD7ED2FBB7D4-10",   # Order ID
+        "l": "0.00000000",                                    # Last executed quantity
+        "L": "0.00000000",                                    # Cumulative filled quantity
+        "z": "0.00001500",                                    # Last executed price
+        "n": "",                                              # Commission amount for all user trades within a given block. Fees will be displayed with each order but will be charged once.
+                                                              # Fee can be composed of a single symbol, ex: "10000BNB"
+                                                              # or multiple symbols if the available "BNB" balance is not enough to cover the whole fees, ex: "1.00000000BNB;0.00001000BTC;0.00050000ETH"
+        "T": 1554890366040313451,                             # Transaction time
+        "t": "",                                              # Trade ID
+        "O": 1554890366040313451                              # Order creation time
     }]  
 }
 ```
@@ -190,17 +190,17 @@ Success sample result:
 {
     "stream": "trades",
     "data": [{
-        "e": "trade",                                           // Event type
-        "E": 7549438,                                           // Event height
-        "s": "100K-9BC_BNB",                                    // Symbol
-        "t": "7549438-0",                                       // Trade ID
-        "p": "3333.00000000",                                   // Price
-        "q": "0.02611100",                                      // Quantity
-        "b": "1D518A2563B0CB912AD70DEB7A18CD7ED2FBB7D4-11",     // Buyer order ID
-        "a": "EA1AE716501D1DB0B9F295A30891D9E562828678-12",     // Seller order ID
-        "T": 1554964166437515341,                               // Trade time
-        "sa": "tbnb1agdww9jsr5wmpw0jjk3s3yweu43g9pnc4p5kg7",    // SellerAddress
-        "ba": "tbnb1r4gc5ftrkr9ez2khph4h5xxd0mf0hd75jf06gw"     // BuyerAddress
+        "e": "trade",                                           # Event type
+        "E": 7549438,                                           # Event height
+        "s": "100K-9BC_BNB",                                    # Symbol
+        "t": "7549438-0",                                       # Trade ID
+        "p": "3333.00000000",                                   # Price
+        "q": "0.02611100",                                      # Quantity
+        "b": "1D518A2563B0CB912AD70DEB7A18CD7ED2FBB7D4-11",     # Buyer order ID
+        "a": "EA1AE716501D1DB0B9F295A30891D9E562828678-12",     # Seller order ID
+        "T": 1554964166437515341,                               # Trade time
+        "sa": "tbnb1agdww9jsr5wmpw0jjk3s3yweu43g9pnc4p5kg7",    # SellerAddress
+        "ba": "tbnb1r4gc5ftrkr9ez2khph4h5xxd0mf0hd75jf06gw"     # BuyerAddress
     }]
 }
 ```
@@ -225,16 +225,16 @@ Success sample result:
 {
     "stream": "marketDiff",
     "data": {
-        "e": "depthUpdate",                  // Event type
-        "E": 1554964484,                     // Event tim
-        "s": "100K-9BC_BNB",                 // Symbol
-        "b": [                               // Bids to be updated
-            ["3333.00000000",                // Price level to be updated
-             "0.07398900"                    // Quantity
+        "e": "depthUpdate",                  # Event type
+        "E": 1554964484,                     # Event tim
+        "s": "100K-9BC_BNB",                 # Symbol
+        "b": [                               # Bids to be updated
+            ["3333.00000000",                # Price level to be updated
+             "0.07398900"                    # Quantity
             ]  
         ],
-        "a": [                               // Asks to be updated
-                                             // Price level to be updated and Quantity
+        "a": [                               # Asks to be updated
+                                             # Price level to be updated and Quantity
         ]                              
     }
 }
@@ -260,15 +260,15 @@ Success sample result:
 {
     "stream": "marketDepth",
     "data": {                           
-        "lastUpdateId": 7551469,       // Last update ID
-        "symbol": "100K-9BC_BNB",      // symbol
-        "bids": [                      // Bids to be updated
-            ["3333.00000000",          // Price level to be updated
-            "0.07398900"]              // Quantity        
+        "lastUpdateId": 7551469,       # Last update ID
+        "symbol": "100K-9BC_BNB",      # symbol
+        "bids": [                      # Bids to be updated
+            ["3333.00000000",          # Price level to be updated
+            "0.07398900"]              # Quantity        
         ],
-        "asks": [                      // Asks to be updated
-            ["66666.00000000",         // Price level to be updated
-            "1.68270010"],             // Quantity 
+        "asks": [                      # Asks to be updated
+            ["66666.00000000",         # Price level to be updated
+            "1.68270010"],             # Quantity 
             ["70000.00000000", 
             "1.00000000"],
             ["90000000000.00000000", 
@@ -317,24 +317,24 @@ Success sample result:
 {
   "stream": "kline_1m",
   "data": {
-    "e": "kline",         // Event type
-    "E": 123456789,       // Event time
-    "s": "BNBBTC",        // Symbol
+    "e": "kline",         # Event type
+    "E": 123456789,       # Event time
+    "s": "BNBBTC",        # Symbol
     "k": {
-      "t": 123400000,     // Kline start time
-      "T": 123460000,     // Kline close time
-      "s": "BNBBTC",      // Symbol
-      "i": "1m",          // Interval
-      "f": "100",         // First trade ID
-      "L": "200",         // Last trade ID
-      "o": "0.0010",      // Open price
-      "c": "0.0020",      // Close price
-      "h": "0.0025",      // High price
-      "l": "0.0015",      // Low price
-      "v": "1000",        // Base asset volume
-      "n": 100,           // Number of trades
-      "x": false,         // Is this kline closed?
-      "q": "1.0000",      // Quote asset volume
+      "t": 123400000,     # Kline start time
+      "T": 123460000,     # Kline close time
+      "s": "BNBBTC",      # Symbol
+      "i": "1m",          # Interval
+      "f": "100",         # First trade ID
+      "L": "200",         # Last trade ID
+      "o": "0.0010",      # Open price
+      "c": "0.0020",      # Close price
+      "h": "0.0025",      # High price
+      "l": "0.0015",      # Low price
+      "v": "1000",        # Base asset volume
+      "n": 100,           # Number of trades
+      "x": false,         # Is this kline closed?
+      "q": "1.0000",      # Quote asset volume
     }
   }
 }
@@ -363,29 +363,29 @@ socket_instance.fetch_ticker_streams(trading_pair='BNB_BTC.B-918',
 {
     "stream": "ticker",             
     "data": {
-        "e": "24hrTicker",          // Event type
-        "E": 1555425469,            // Event time
-        "s": "BNB_BTC.B-918",       // Symbol
-        "p": "0.00000000",          // Price change
-        "P": "0.00000000",          // Price change percent
-        "w": "0.00373109",          // Weighted average price
-        "x": "0.00373109",          // Previous day's close price
-        "c": "0.00373109",          // Current day's close price
-        "Q": "1.00000000",          // Close trade's quantity
-        "b": "0.00379908",          // Best bid price
-        "B": "58.00000000",         // Best bid quantity
-        "a": "0.00381643",          // Best ask price
-        "A": "91.00000000",         // Best ask quantity
-        "o": "0.00373109",          // Open price
-        "h": "0.00373109",          // High price
-        "l": "0.00373109",          // Low price
-        "v": "0.00000000",          // Total traded base asset volume
-        "q": "0.00000000",          // Total traded quote asset volume
-        "O": 1555339051274,         // Statistics open time
-        "C": 1555425451274,         // Statistics close time
-        "F": "8349745-0",           // First trade ID
-        "L": "8349745-0",           // Last trade Id
-        "n": 0                      // Total number of trades
+        "e": "24hrTicker",          # Event type
+        "E": 1555425469,            # Event time
+        "s": "BNB_BTC.B-918",       # Symbol
+        "p": "0.00000000",          # Price change
+        "P": "0.00000000",          # Price change percent
+        "w": "0.00373109",          # Weighted average price
+        "x": "0.00373109",          # Previous day's close price
+        "c": "0.00373109",          # Current day's close price
+        "Q": "1.00000000",          # Close trade's quantity
+        "b": "0.00379908",          # Best bid price
+        "B": "58.00000000",         # Best bid quantity
+        "a": "0.00381643",          # Best ask price
+        "A": "91.00000000",         # Best ask quantity
+        "o": "0.00373109",          # Open price
+        "h": "0.00373109",          # High price
+        "l": "0.00373109",          # Low price
+        "v": "0.00000000",          # Total traded base asset volume
+        "q": "0.00000000",          # Total traded quote asset volume
+        "O": 1555339051274,         # Statistics open time
+        "C": 1555425451274,         # Statistics close time
+        "F": "8349745-0",           # First trade ID
+        "L": "8349745-0",           # Last trade Id
+        "n": 0                      # Total number of trades
     }
 }
 ```
@@ -399,29 +399,29 @@ socket_instance.fetch_ticker_streams(is_full_data=True,
 {
     "stream": "allTickers",             
     "data": [{
-        "e": "24hrTicker",          // Event type
-        "E": 1555426679,            // Event time
-        "s": "83SHUIHU-AC4_BNB",    // Symbol
-        "p": "0.00000000",          // Price change
-        "P": "0.00000000",          // Price change percent
-        "w": "0.07995000",          // Weighted average price
-        "x": "0.07995000",          // Previous day's close price
-        "c": "0.07995000",          // Current day's close price
-        "Q": "30000.00000000",      // Close trade's quantity
-        "b": "0.00000000",          // Best bid price
-        "B": "0.00000000",          // Best bid quantity
-        "a": "0.00000000",          // Best ask price
-        "A": "0.00000000",          // Best ask quantity
-        "o": "0.07995000",          // Open price
-        "h": "0.07995000",          // High price
-        "l": "0.07995000",          // Low price
-        "v": "0.00000000",          // Total traded base asset volume
-        "q": "0.00000000",          // Total traded quote asset volume
-        "O": 1555340275037,         // Statistics open time
-        "C": 1555426675037,         // Statistics close time
-        "F": "3036396-1",           // First trade ID
-        "L": "3036396-1",           // Last trade Id
-        "n": 0                      // Total number of trades
+        "e": "24hrTicker",          # Event type
+        "E": 1555426679,            # Event time
+        "s": "83SHUIHU-AC4_BNB",    # Symbol
+        "p": "0.00000000",          # Price change
+        "P": "0.00000000",          # Price change percent
+        "w": "0.07995000",          # Weighted average price
+        "x": "0.07995000",          # Previous day's close price
+        "c": "0.07995000",          # Current day's close price
+        "Q": "30000.00000000",      # Close trade's quantity
+        "b": "0.00000000",          # Best bid price
+        "B": "0.00000000",          # Best bid quantity
+        "a": "0.00000000",          # Best ask price
+        "A": "0.00000000",          # Best ask quantity
+        "o": "0.07995000",          # Open price
+        "h": "0.07995000",          # High price
+        "l": "0.07995000",          # Low price
+        "v": "0.00000000",          # Total traded base asset volume
+        "q": "0.00000000",          # Total traded quote asset volume
+        "O": 1555340275037,         # Statistics open time
+        "C": 1555426675037,         # Statistics close time
+        "F": "3036396-1",           # First trade ID
+        "L": "3036396-1",           # Last trade Id
+        "n": 0                      # Total number of trades
     },{
     '...OMIT...'
     }]
@@ -438,15 +438,15 @@ socket_instance.fetch_ticker_streams(trading_pair='BNB_BTC.B-918',
 {
     "stream": "miniTicker",             
     "data": {
-        "e": "24hrTicker",          // Event type
-        "E": 1555425469,            // Event time
-        "s": "BNB_BTC.B-918",       // Symbol
-        "c": "0.00373109",          // Current day's close price
-        "o": "0.00373109",          // Open price
-        "h": "0.00373109",          // High price
-        "l": "0.00373109",          // Low price
-        "v": "0.00000000",          // Total traded base asset volume
-        "q": "0.00000000",          // Total traded quote asset volume
+        "e": "24hrTicker",          # Event type
+        "E": 1555425469,            # Event time
+        "s": "BNB_BTC.B-918",       # Symbol
+        "c": "0.00373109",          # Current day's close price
+        "o": "0.00373109",          # Open price
+        "h": "0.00373109",          # High price
+        "l": "0.00373109",          # Low price
+        "v": "0.00000000",          # Total traded base asset volume
+        "q": "0.00000000",          # Total traded quote asset volume
     }
 }
 
@@ -461,15 +461,15 @@ socket_instance.fetch_ticker_streams(is_full_data=False,
 {
     "stream": "allMiniTickers",             
     "data": [{
-        "e": "24hrTicker",          // Event type
-        "E": 1555428570,            // Event time
-        "s": "MBNB-113_BNB",        // Symbol
-        "c": "0.00010000",          // Current day's close price
-        "o": "0.00010000",          // Open price
-        "h": "0.00010000",          // High price
-        "l": "0.00010000",          // Low price
-        "v": "3.00000000",          // Total traded base asset volume
-        "q": "0.00030000",          // Total traded quote asset volume
+        "e": "24hrTicker",          # Event type
+        "E": 1555428570,            # Event time
+        "s": "MBNB-113_BNB",        # Symbol
+        "c": "0.00010000",          # Current day's close price
+        "o": "0.00010000",          # Open price
+        "h": "0.00010000",          # High price
+        "l": "0.00010000",          # Low price
+        "v": "3.00000000",          # Total traded base asset volume
+        "q": "0.00030000",          # Total traded quote asset volume
     },{
     '...OMIT...'
     }]
@@ -495,7 +495,7 @@ Success sample result:
 {   
     "stream": "blockheight",
     "data": {
-        "h":8699895        // Block height
+        "h":8699895        # Block height
     }
 }
 
