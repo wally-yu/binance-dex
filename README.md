@@ -33,9 +33,14 @@ pip install binance-dex
 ```
  - Notes: If you are working on Windows platform, compiling tools `Microsoft Visual C++ 14.0` is required.
 
+#### Full Code Example
+Find full Sample Usage from [this link](https://github.com/wally-yu/binance-dex/blob/master/sample.py)
+
 ---
 
-#### API Sample 
+#### Code Examples Sector by Sector
+
+#### - API Sample 
 ```
 from binance_dex.api import Client
 
@@ -57,7 +62,7 @@ Sample return:
 ---
 
 
-#### Crypto Sample 
+####  - Crypto Sample 
 
 ```
 from binance_dex.crypto import BinanceChainCrypto
@@ -90,14 +95,15 @@ Generating Private Key / Public Key / Mnemonic words:
 
 ---
 
-#### Socket Sample 
+####  - Socket Sample 
 
 ```
 from binance_dex.sockets import BinanceChainSocket
 
+# --- Notice: Need to provide customized Call Back function to handle socket return data ---
 
 # Sample of Customized Callback function to handle received data
-def customized_msg_handler(ws, received_message):
+def customized_call_back(ws, received_message):
     ''' Simply print out '''
     print('----- Customized handler -----')
     print(str(received_message))
@@ -110,7 +116,7 @@ socket_instance = BinanceChainSocket(IS_TEST_NET)
 socket_instance.fetch_ticker_streams(trading_pair='100K-9BC_BNB',
                                      is_full_data=True,
                                      one_off=False, # long lived connection
-                                     callback_function=customized_msg_handler)
+                                     callback_function=customized_call_back)
 ```
 Sample return:
 
@@ -128,18 +134,18 @@ Sample return:
 
 
 ---
-#### Node RPC Sample 
+####  - Node RPC Sample 
 
 ```
 from binance_dex.node_rpc import BinanceChainNodeRPC
 
 # Create Instance
 
-# # OPTION 1: using existing RPC node
+# OPTION 1: using existing RPC node
 node_rpc_instance = BinanceChainNodeRPC(is_test_net=True,
                                         node_rpc_url=None)
                                         
-# #OPTION 2: using your own node
+# OPTION 2: using your own node
 # node_rpc_instance = BinanceChainNodeRPC(node_rpc_url='https://seed-pre-s3.binance.org')
 
 # Get number of unconfirmed transactions
@@ -148,7 +154,7 @@ print(node_rpc_instance.num_unconfirmed_txs())
 Sample return
 
 ```
-Using Binance RPC server, trying to find a healthy node server...
+Using Existing RPC server, trying to find a healthy node server...
 
 Request URL: https://seed-pre-s3.binance.org:443/health ... ...
 
@@ -162,7 +168,7 @@ Request URL: https://seed-pre-s3.binance.org:443/num_unconfirmed_txs ... ...
 
 
 ## SDk Overview
-As you might noticed, this SDK is composed with 4 parts:
+As you might noticed from above code sample, this SDK is composed with 4 parts:
 - API
 - WebSockets
 - Node RPC
