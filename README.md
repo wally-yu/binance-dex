@@ -34,7 +34,7 @@ pip install binance-dex
  - Notes: If you are working on Windows platform, compiling tools `Microsoft Visual C++ 14.0` is required.
 
 #### Full Code Example
-Find full Sample Usage from [this link](https://github.com/wally-yu/binance-dex/blob/master/sample.py)
+Find full Sample Usage from [example.py](https://github.com/wally-yu/binance-dex/blob/master/sample.py)
 
 ---
 
