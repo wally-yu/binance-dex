@@ -169,12 +169,13 @@ As you might noticed, this SDK is composed with 4 parts:
 - Crypto
 
 #### Description
-|               |Description|
-|:---:          |:---:      |:---:      |:---:      |:---:      |
-|**API**    | HTTP API provides access to a Binance Chain node deployment and market data services|
-|**Web Sockets**  |The DEX exposes several data streams over standard WebSocket connections, which can be consumed by modern web browsers and server-side WebSocket libraries|
-|**Node RPC**   | May be used to interact with a node directly over HTTP or websockets. Using RPC, you may perform low-level operations like executing ABCI queries, viewing network/consensus state or broadcasting a transaction|
-|**Crypto**   |Crypto related functions (such as key managment)|
+- **API:** HTTP API provides access to a Binance Chain node deployment and market data services [DETAILED API DOC](https://github.com/wally-yu/binance-dex/blob/master/README_API.md)
+
+- **Web Sockets:** The DEX exposes several data streams over standard WebSocket connections, which can be consumed by modern web browsers and server-side WebSocket libraries [DETAILED SOCKET DOC](https://github.com/wally-yu/binance-dex/blob/master/README_WebSockets.md)
+
+- **Node RPC:** May be used to interact with a node directly over HTTP or websockets. Using RPC, you may perform low-level operations like executing ABCI queries, viewing network/consensus state or broadcasting a transaction [DETAILED NODE DOC](https://github.com/wally-yu/binance-dex/blob/master/README_NodeRPC.md)
+
+- **Crypto:** Crypto related functions (such as key managment) [DETAILED CRYPTO DOC](https://github.com/wally-yu/binance-dex/blob/master/README_Crypto.md)
 
 #### Availability:
 
@@ -190,7 +191,6 @@ As you might noticed, this SDK is composed with 4 parts:
             <th>Crypto</th>
         </tr>
     </thead>
-    <tbody>
         <tr>
             <td rowspan=3>Key</td>
             <td>generate mnemonic</td>
@@ -380,9 +380,6 @@ As you might noticed, this SDK is composed with 4 parts:
             <td></td>
             <td></td>
         </tr>
-
-        
-    </tbody>
 </table>
 </html>
 
@@ -391,7 +388,8 @@ As you might noticed, this SDK is composed with 4 parts:
 
 |               |API        |WebSockets |JSONRPC    |Crypto     |
 |:---:          |:---:      |:---:      |:---:      |:---:      |
-|Need Network   |&radic;    |&radic;    |&radic;    |    X       |
+|Requir Network   |&radic;    |&radic;    |&radic;    |    X       |
+Crypto can work offline without network connection
 
 ## Join us:
 You are always welcomed to join us! Leave your suggestions / or submit your codes
