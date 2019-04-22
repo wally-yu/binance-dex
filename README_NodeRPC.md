@@ -51,32 +51,32 @@ node_rpc_instance.XXX()
 #### Service availability:
 |Service Name      |JSONRPC over HTTP(Current) |
 |---               |:---:                      |:---:         |:---:                   |
-|ABCIInfo          |&radic;                    |&bigcirc;     |&bigcirc;               |
-|ABCIQuery         |&bigcirc;                  |&bigcirc;     |&bigcirc;               |
-|Block             |&radic;                    |&bigcirc;     |&bigcirc;               |
-|BlockResults      |&radic;                    |&bigcirc;     |&bigcirc;               | 
-|BlockChainInfo    |&radic;                   |&bigcirc;     |&bigcirc;               |
-|BroadcastTxAsync  |&radic;                    |&bigcirc;     |&bigcirc;               |
-|BroadcastTxCommit |&radic;                    |&bigcirc;     |&bigcirc;               |
-|BroadcastTxSync   |&radic;                    |&bigcirc;     |&bigcirc;               |
-|Commit            |&radic;                    |&bigcirc;     |&bigcirc;               |
-|ConsensusParams   |&radic;                    |&bigcirc;     |&bigcirc;               |
-|ConsensusState    |&ominus;                   |&bigcirc;     |&bigcirc;               |
-|DumpConsensusState|&radic;                  |&bigcirc;     |&bigcirc;               |
-|Genesis           |&radic;                    |&bigcirc;     |&bigcirc;               |
-|Health            |&radic;                  |&bigcirc;     |&bigcirc;               |
-|NetInfo           |&radic;                    |&bigcirc;     |&bigcirc;               |
-|NumUnconfirmedTxs |&radic;                 |&bigcirc;     |&bigcirc;               |
-|Status            |&radic;                    |&bigcirc;     |&bigcirc;               |
-|Subscribe         |&times;                    |&times;       |&bigcirc;               |
-|Tx                |&radic;                    |&bigcirc;     |&bigcirc;               |
-|TxSearch          |&radic;                  |&bigcirc;     |&bigcirc;               |
-|UnconfirmedTxs    |&radic;                    |&bigcirc;     |&bigcirc;               |
-|UnsafeDialPeers   |&times;                    |&times;       |&times;                 |
-|UnsafeDialSeeds   |&times;                    |&times;       |&times;                 |
-|Unsubscribe       |&times;                    |&times;       |&bigcirc;               |
-|UnsubscribeAll    |&times;                    |&times;       |&bigcirc;               |
-|Validators        |&radic;                    |&bigcirc;     |&bigcirc;               |
+|ABCIInfo          |&radic;                    |
+|ABCIQuery         |&bigcirc;                  |
+|Block             |&radic;                    |
+|BlockResults      |&radic;                    | 
+|BlockChainInfo    |&radic;                   |
+|BroadcastTxAsync  |&radic;                    |
+|BroadcastTxCommit |&radic;                    |
+|BroadcastTxSync   |&radic;                    |
+|Commit            |&radic;                    |
+|ConsensusParams   |&radic;                    |
+|ConsensusState    |&ominus;                   |
+|DumpConsensusState|&radic;                  |
+|Genesis           |&radic;                    |
+|Health            |&radic;                  |
+|NetInfo           |&radic;                    |
+|NumUnconfirmedTxs |&radic;                 |
+|Status            |&radic;                    |
+|Subscribe         |&times;                    |
+|Tx                |&radic;                    |
+|TxSearch          |&radic;                  |
+|UnconfirmedTxs    |&radic;                    |
+|UnsafeDialPeers   |&times;                    |
+|UnsafeDialSeeds   |&times;                    |
+|Unsubscribe       |&times;                    |
+|UnsubscribeAll    |&times;                    |
+|Validators        |&radic;                    |
     
     
 &ensp;     &radic;: Able to Use  &ensp;&ensp;     &bigcirc;: Unfinished   &ensp;&ensp;    &ominus;:Unstable &ensp;&ensp;  &times;: Unable to supported 
