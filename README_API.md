@@ -49,12 +49,12 @@ If `any error` occurred, message return will be：
 |markets                     |&radic;                    |
 |fees                        |&radic;                    |
 |depth                       |&radic;                    |
-|broadcast                   |&bigcirc;                  |
+|broadcast                   |&radic;                    |
 |klines                      |&radic;                    |
-|orders/closed               |&bigcirc;                  |
-|orders/open                 |&bigcirc;                  |
+|orders/closed               |&radic;                   |
+|orders/open                 |&radic;                   |
 |orders/{id}                 |&radic;                    |
-|ticker/24hr                 |&bigcirc;                  |
+|ticker/24hr                 |&radic;                  |
 |trades                      |&bigcirc;                  |
 |block-exchange-fee          |&radic;                    |
 |transactions                |&bigcirc;                  |
@@ -66,8 +66,7 @@ If `any error` occurred, message return will be：
 ### Referance
 The following document subhead will appear like that: 
  `API service func`  ->  `raw HTTP API type`, which declare the mapping relationships between Python API Package service
- function and raw HTTP API type. ~~Also, the success return of API will be simplified as `ret_data` for description 
- convenience.~~
+ function and raw HTTP API type. 
 
 #### `get_block_time()`  -> `/api/v1/time`
 - Summary: Get the block time.

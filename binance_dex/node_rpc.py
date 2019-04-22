@@ -11,6 +11,7 @@ NODE_RPC_ENTRY_POINT_MAPPING = {
     'get_list': '',
     'abci_info': '/abci_info',
     'block': '/block',
+    'blockchain': '/blockchain',
     'block_results': '/block_results',
     'broadcast_tx_async': '/broadcast_tx_async',
     'broadcast_tx_sync': '/broadcast_tx_sync',
@@ -153,6 +154,33 @@ class BinanceChainNodeRPC(object):
         """
 
         para = '?height=%s' % height if height else ''
+        return std_ret(status=True,
+                       data=self._wrapped_request(para=para).json())
+
+    def blockchain(self, min_height, max_height):
+        """
+        Get block headers for minHeight <= height <= maxHeight.
+        Block headers are returned in descending order (highest first). Query Parameters
+
+        :param min_height: minimum height
+        :param max_height: maximum height
+
+        :return:
+        {'status': True, 'result': {'jsonrpc': '2.0', 'id': '', 'result': {'last_height': '9880808',
+        'block_metas': [{'block_id': {'hash': '5701A12896315A121303A979ACB707ACC447E20EFACFCB26174E9ED3997E2F5C',
+        'parts': {'total': '1', 'hash': '8C63BE3E3A221B984219CFAA1C196DDF0F202D68293311BFA9EE0B7A9155EACD'}},
+        'header': {'version': {'block': '10', 'app': '0'}, 'chain_id': 'Binance-Chain-Nile', 'height': '10',
+        'time': '2019-03-07T01:57:22.135103158Z', 'num_txs': '0', 'total_txs': '0', 'last_block_id':
+        {'hash': '1AF674F804E277354E8742176ECA74E338F52C237E6DBFF92819D75037E4F651', 'parts': {'total': '1',
+        'hash': 'BB3C36D5BBDAB441A7339385C071C4E804C4C3DD5C7BC15D60BC658A6B261906'}}, 'last_commit_hash':
+        '5442553C06521016756796015AF78FCAC752FFA9E94ACAF4DAA5DF4113B4B354', 'data_hash': '', 'validators_hash':
+        '80D9AB0FC10D18CA0E0832D5F4C063C5489EC1443DFB738252D038A82131B27A', 'next_validators_hash':
+        '80D9AB0FC10D18CA0E0832D5F4C063C5489EC1443DFB738252D038A82131B27A', 'consensus_hash':
+        '294D8FBD0B94B767A7EBA9840F299A3586DA7FE6B5DEAD3B7EECBA193C400F93', 'app_hash':
+        'E7D96927FD82FD910624AA8034B8A527FCEB1F7AB353DE789A3ECA8D400BDE31', 'last_results_hash': '', 'evidence_hash':
+        '', 'proposer_address': 'E0DD72609CC106210D1AA13936CB67B93A0AEE21'}}]}}}
+        """
+        para = '?minHeight=%s&maxHeight=%s' % (min_height, max_height)
         return std_ret(status=True,
                        data=self._wrapped_request(para=para).json())
 

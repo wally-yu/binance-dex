@@ -191,6 +191,9 @@ node_rpc_instance = BinanceChainNodeRPC(is_test_net=True,
 # # Get block at a given height. If no height is provided, it will fetch the latest block
 # print(node_rpc_instance.block(height=10))
 #
+# # Get block headers for minHeight <= height <= maxHeight
+# print(node_rpc_instance.blockchain(10, 10))
+#
 # # gets ABCIResults at a given height
 # print(node_rpc_instance.block_results(height=100))
 #
