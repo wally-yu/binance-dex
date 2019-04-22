@@ -49,28 +49,28 @@ node_rpc_instance.XXX()
 ```
 
 #### Service availability:
-|Service Name      |JSONRPC over HTTP(Current) |URI over HTTP |JSONRPC over websockets |
+|Service Name      |JSONRPC over HTTP(Current) |
 |---               |:---:                      |:---:         |:---:                   |
 |ABCIInfo          |&radic;                    |&bigcirc;     |&bigcirc;               |
 |ABCIQuery         |&bigcirc;                  |&bigcirc;     |&bigcirc;               |
 |Block             |&radic;                    |&bigcirc;     |&bigcirc;               |
 |BlockResults      |&radic;                    |&bigcirc;     |&bigcirc;               | 
-|BlockChainInfo    |&bigcirc;                  |&bigcirc;     |&bigcirc;               |
+|BlockChainInfo    |&radic;                   |&bigcirc;     |&bigcirc;               |
 |BroadcastTxAsync  |&radic;                    |&bigcirc;     |&bigcirc;               |
 |BroadcastTxCommit |&radic;                    |&bigcirc;     |&bigcirc;               |
 |BroadcastTxSync   |&radic;                    |&bigcirc;     |&bigcirc;               |
 |Commit            |&radic;                    |&bigcirc;     |&bigcirc;               |
 |ConsensusParams   |&radic;                    |&bigcirc;     |&bigcirc;               |
 |ConsensusState    |&ominus;                   |&bigcirc;     |&bigcirc;               |
-|DumpConsensusState|&bigcirc;                  |&bigcirc;     |&bigcirc;               |
+|DumpConsensusState|&radic;                  |&bigcirc;     |&bigcirc;               |
 |Genesis           |&radic;                    |&bigcirc;     |&bigcirc;               |
-|Health            |&bigcirc;                  |&bigcirc;     |&bigcirc;               |
+|Health            |&radic;                  |&bigcirc;     |&bigcirc;               |
 |NetInfo           |&radic;                    |&bigcirc;     |&bigcirc;               |
-|NumUnconfirmedTxs |&bigcirc;                  |&bigcirc;     |&bigcirc;               |
+|NumUnconfirmedTxs |&radic;                 |&bigcirc;     |&bigcirc;               |
 |Status            |&radic;                    |&bigcirc;     |&bigcirc;               |
 |Subscribe         |&times;                    |&times;       |&bigcirc;               |
 |Tx                |&radic;                    |&bigcirc;     |&bigcirc;               |
-|TxSearch          |&bigcirc;                  |&bigcirc;     |&bigcirc;               |
+|TxSearch          |&radic;                  |&bigcirc;     |&bigcirc;               |
 |UnconfirmedTxs    |&radic;                    |&bigcirc;     |&bigcirc;               |
 |UnsafeDialPeers   |&times;                    |&times;       |&times;                 |
 |UnsafeDialSeeds   |&times;                    |&times;       |&times;                 |
@@ -79,7 +79,7 @@ node_rpc_instance.XXX()
 |Validators        |&radic;                    |&bigcirc;     |&bigcirc;               |
     
     
-&ensp;     &radic;: Able to Use  &ensp;&ensp;     &bigcirc;: Unfinished   &ensp;&ensp;    &ominus;:Unstable &ensp;&ensp;  &times;: Official Unsupported 
+&ensp;     &radic;: Able to Use  &ensp;&ensp;     &bigcirc;: Unfinished   &ensp;&ensp;    &ominus;:Unstable &ensp;&ensp;  &times;: Unable to supported 
 
 ### Referance
 The following document list the funcs in `class BinanceChainNodeRPC`. The subheads will appear like that: 
