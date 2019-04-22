@@ -3,6 +3,7 @@
 
 
 ## Introudction:
+This Python package develop based on [Binance Chain official doc](https://docs.binance.org/) and tested all functionalities on test-net.
 
 Ways to connect to Binance DEX are:
  - REST API
@@ -336,7 +337,7 @@ As you might noticed from above code sample, this SDK is composed with 4 parts:
         </tr>
         <tr>
             <td>get updated ticker statistics</td>
-            <td></td>
+            <td>&radic;</td>
             <td>&radic;</td>
             <td></td>
             <td></td>
@@ -395,7 +396,7 @@ As you might noticed from above code sample, this SDK is composed with 4 parts:
 |               |API        |WebSockets |JSONRPC    |Crypto     |
 |:---:          |:---:      |:---:      |:---:      |:---:      |
 |Requir Network   |&radic;    |&radic;    |&radic;    |    X       |
-Crypto can work offline without network connection
+
 
 ## Join us:
 You are always welcomed to join us! Leave your suggestions / or submit your codes
