@@ -49,7 +49,7 @@ node_rpc_instance.XXX()
 ```
 
 #### Service availability:
-|Service Name      |JSONRPC over HTTP(Current) |
+|Service Name      |JSONRPC over HTTP |
 |---               |:---:                      |
 |ABCIInfo          |&radic;                    |
 |ABCIQuery         |&bigcirc;                  |
