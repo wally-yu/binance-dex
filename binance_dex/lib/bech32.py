@@ -21,6 +21,9 @@
 """Reference implementation for Bech32 and segwit addresses."""
 """ This file was referenced from https://github.com/ChorusOne/cosmos-bech32-convertor"""
 
+import hashlib
+import array
+
 CHARSET = "qpzry9x8gf2tvdw0s3jn54khce6mua7l"
 
 
@@ -123,3 +126,15 @@ def encode(hrp, witver, witprog):
     return ret
 
 
+def decode_address(address):
+    hrp, data = bech32_decode(address)
+    bits = convertbits(data, 5, 8, False)
+
+    return array.array('B', bits).tobytes()
+
+
+def address_from_public_key(public_key, hrp='tbnb'):
+    s = hashlib.new('sha256', public_key).digest()
+    r = hashlib.new('ripemd160', s).digest()
+
+    return encode(hrp, r)

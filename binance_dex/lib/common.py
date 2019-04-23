@@ -23,8 +23,9 @@ def binance_api_request(url, method, body=None):
     """
     if method.upper() == 'GET':
         ret = requests.get(url=url)
-    elif method.upper == 'POST':
-        ret = requests.post(url=url, json=body)
+    elif method.upper() == 'POST':
+        headers = {'content-type': 'text/plain'}
+        ret = requests.post(url=url, data=body, headers=headers)
     else:
         return std_ret(False, 'Only "GET" or "POST" is allowed for Binance Request')
     if ret.status_code == 200:

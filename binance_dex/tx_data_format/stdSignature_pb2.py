@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x12stdSignature.proto\"\x99\x01\n\x0cStdSignature\x12%\n\x07pub_key\x18\x01 \x01(\x0b\x32\x14.StdSignature.PubKey\x12\x11\n\tsignature\x18\x02 \x01(\t\x12\x16\n\x0e\x61\x63\x63ount_number\x18\x03 \x01(\x03\x12\x10\n\x08sequence\x18\x04 \x01(\x03\x1a%\n\x06PubKey\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\tb\x06proto3')
+  serialized_pb=_b('\n\x12stdSignature.proto\"f\n\x0cStdSignature\x12\x0f\n\x07pub_key\x18\x01 \x01(\x0c\x12\x11\n\tsignature\x18\x02 \x01(\x0c\x12\x16\n\x0e\x61\x63\x63ount_number\x18\x03 \x01(\x03\x12\x10\n\x08sequence\x18\x04 \x01(\x03\x1a\x08\n\x06PubKeyb\x06proto3')
 )
 
 
@@ -33,20 +33,6 @@ _STDSIGNATURE_PUBKEY = _descriptor.Descriptor(
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
-    _descriptor.FieldDescriptor(
-      name='type', full_name='StdSignature.PubKey.type', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='value', full_name='StdSignature.PubKey.value', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -59,8 +45,8 @@ _STDSIGNATURE_PUBKEY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=139,
-  serialized_end=176,
+  serialized_start=116,
+  serialized_end=124,
 )
 
 _STDSIGNATURE = _descriptor.Descriptor(
@@ -72,15 +58,15 @@ _STDSIGNATURE = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='pub_key', full_name='StdSignature.pub_key', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
+      number=1, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='signature', full_name='StdSignature.signature', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      number=2, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -110,12 +96,11 @@ _STDSIGNATURE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23,
-  serialized_end=176,
+  serialized_start=22,
+  serialized_end=124,
 )
 
 _STDSIGNATURE_PUBKEY.containing_type = _STDSIGNATURE
-_STDSIGNATURE.fields_by_name['pub_key'].message_type = _STDSIGNATURE_PUBKEY
 DESCRIPTOR.message_types_by_name['StdSignature'] = _STDSIGNATURE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
