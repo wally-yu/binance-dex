@@ -3,21 +3,26 @@
 
 
 ## Introudction:
-This Python package develop based on [Binance Chain official doc](https://docs.binance.org/) and tested all functionalities on test-net.
+This Python package develop based on [Binance Chain official doc](https://docs.binance.org/) and tested all functionalities on test-net as well as main-net.
 
-Ways to connect to Binance DEX are:
+#### Dex Links:
+ - Test-net: https://testnet.binance.org/
+ - Main-net: https://www.binance.org
+
+According to official doc, ways to connect to Binance DEX are:
  - REST API
  - CLI
- - WebSocket
- - JSONRPC
+ - Web Socket
+ - Node RPC
 
 This python package will provide all methods available as from binance official document except cli:
 - [x] REST API
 - [ ] CLI
 - [x] WebSocket
-- [x] JSONRPC
+- [x] Node NRPC
+
 ## Environment:
-Due to time limitation, we didn't test too much for different python version + os environment combinations, below are what we tested so far:
+Due to time limitation, we didn't test different python version + os environment combinations, below are what we tested so far:
 - [x] Python3.5 + MacOs
 - [x] Python3.5 + Windows10
 
@@ -35,13 +40,13 @@ pip install binance-dex
  - Notes: If you are working on Windows platform, compiling tools `Microsoft Visual C++ 14.0` is required.
 
 #### Full Code Example
-Find full Sample Usage from [example.py](https://github.com/wally-yu/binance-dex/blob/master/sample.py)
+Find full Sample Usage from [code_examples.py](https://github.com/wally-yu/binance-dex/blob/master/sample.py)
 
 ---
 
 #### Code Examples Sector by Sector
 
-#### - API Sample 
+#### - API Sample Usage
 ```
 from binance_dex.api import Client
 
@@ -63,7 +68,7 @@ Sample return:
 ---
 
 
-####  - Crypto Sample 
+####  - Crypto Sample Usage
 
 ```
 from binance_dex.crypto import BinanceChainCrypto
@@ -96,7 +101,7 @@ Generating Private Key / Public Key / Mnemonic words:
 
 ---
 
-####  - Socket Sample 
+####  - Socket Sample Usage
 
 ```
 from binance_dex.sockets import BinanceChainSocket
@@ -135,7 +140,7 @@ Sample return:
 
 
 ---
-####  - Node RPC Sample 
+####  - Node RPC Sample Usage
 
 ```
 from binance_dex.node_rpc import BinanceChainNodeRPC
