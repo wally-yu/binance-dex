@@ -94,10 +94,10 @@ Sample Return :
 ```python
 > crypto_instance.generate_key()
 
-{'private_key': '33b1ffceb5a80e4436035f71573b3198e5dff64bc1d620625d3ae94ca9ceca1e',
+{'private_key': '33b1ffceb5a80e4436035f71573b3198e5dff64bc1d620625d3ae94ca9cexxxx',
  'public_address': 'bnb1xzx5lungjnlc8fmx7qa7c7njxsqphcr7y9j9za',
  'mnemonic': 'world supply word message critic woman donate romance sleep safe voyage faint maid utility fish 
-              shuffle offer pulse tail owner burger vicious until sword'
+              shuffle offer pulse tail owner burger vicious until xxxxx'
  }
 ```
 
@@ -113,7 +113,7 @@ Sample Return :
 > mnemonic_words = crypto_instance.generate_mnemonic()
 > crypto_instance.generate_key_from_mnemonic(mnemonic_words)
 
-{'private_key': '0225fb7752873b93f3bf9afc8a3bdd35e9052e04e21ffd91e42d8aa45a542459',
+{'private_key': '0225fb7752873b93f3bf9afc8a3bdd35e9052e04e21ffd91e42d8aa45a5xxxxx',
  'public_address': 'bnb1ejk8eah9ct5rgl3k4s4kqc3udf7jy9qvzjw56m'
  }
 ```
@@ -128,14 +128,14 @@ Sample Return :
 > mnemonic_words = crypto_instance.generate_mnemonic()
 > crypto_instance.generate_keys_from_mnemonic(mnemonic_words, 10)
 
-[{'private_key': 'bedd712859eb0c6c3519dcae1749088e2168b545844f5fb6a93f97fef4429b56', 
+[{'private_key': 'bedd712859eb0c6c3519dcae1749088e2168b545844f5fb6a93f97fef44xxxxx', 
   'public_address': 'tbnb1uj5056ys4ssr4zdzq9c7n92yndd5e5hm5m77nl'},
- {'private_key': '0b303f09175ce3ab018cafb84caee1d15a7fc5862f40302f8a5ee181b4833ce1', 
+ {'private_key': '0b303f09175ce3ab018cafb84caee1d15a7fc5862f40302f8a5ee181b48xxxxx', 
  'public_address': 'tbnb1j93zkpj7u03g4s240h5n6wf8ttdesau6s2sl97'},
- {'private_key': 'a6ba3f2efbb229e774f89c8d793f1d24be8b7270e43f04d39724936cc9d89e7b', 
+ {'private_key': 'a6ba3f2efbb229e774f89c8d793f1d24be8b7270e43f04d39724936cc9dxxxxx', 
  'public_address': 'tbnb1v9unkets8tj44m075pfqeefvd0e930jm82ryl9'},
  ...
- {'private_key': 'e287292e5f8c65bb59528e372bf8fe90972e02ffd3da085677140ef3e9053d29', 
+ {'private_key': 'e287292e5f8c65bb59528e372bf8fe90972e02ffd3da085677140ef3e90xxxxx', 
  'public_address': 'tbnb1muln7lrsl4y7mmt07rplevzfsvkfgdunm2f42k'}
  ]
 ```
