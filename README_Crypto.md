@@ -54,7 +54,7 @@ pilot robust brand public boat define battle
 **PLEASE TAKE GOOD CARE OF YOUR OWN MNEMONIC WORDS. ANY LEAK OF THE MNEMONIC WORDS MAY CAUSE ENORMOUS AND IRREVERSIBLE
  LOSSES OF YOUR WALLET PROPERTY.**
  
-Brief algorithm flow chart refer to bip-39:  (***???PIC COPYRIGHT PROBLEM***)
+Brief algorithm flow chart refer to bip-39: 
 
 ![MnemonicWords](https://github.com/wally-yu/binance-dex/blob/master/mnemonics-words-sample.jpg)
 
