@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-// please note the field name is the JSON name.
-message Vote {
-  int64 proposal_id = 1;     // ID of the proposal
-  bytes voter = 2;           // address of the voter
-  uint64 option = 3 ;        // option from OptionSet chosen by the voter,
-}

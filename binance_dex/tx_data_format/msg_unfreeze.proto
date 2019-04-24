@@ -1,8 +1,0 @@
-syntax = "proto3";
-
-// please note the field name is the JSON name.
-message TokenUnfreeze {
-  bytes from = 1; // owner address
-  string symbol = 2; // token symbol, in full name with "-" suffix
-  int64 amount = 3; // amount of token to unfreeze
-}
