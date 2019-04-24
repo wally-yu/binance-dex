@@ -1,6 +1,6 @@
 ## Crypto Lib 
 
-The Binance DEX Python Crypto Package provides method to ...
+The Binance DEX Python Crypto Package provides method to manage keys locally
 
 ### Usage
 `Step1:` Create Crypto instance
@@ -13,7 +13,7 @@ crypto_instance = BinanceChainCrypto(is_test_net)
 ***NOTES:***  
 `class BinanceChainCrypto` has one positional argument during initializing:
 - If `is_test_net = True` , Encapsulation of a Bitcoin ECDSA public key, 
-address `prefix = 'tbnb'`, otherwise `prefix = 'bnb'`  (***???UNFINISHED***)
+address `prefix = 'tbnb'`, otherwise `prefix = 'bnb'`
 
 
 `Step2:` call the specific function
