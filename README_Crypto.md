@@ -1,6 +1,6 @@
 ## Crypto Lib 
 
-The Binance DEX Python Crypto Package provides method to manage keys locally
+The Binance DEX Python Crypto Package provides capabilities to manage keys locally
 
 ### Usage
 `Step1:` Create Crypto instance
