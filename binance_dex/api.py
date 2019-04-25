@@ -3,7 +3,6 @@ import requests
 import datetime
 from binance_dex.lib.common import binance_api_request, std_ret
 
-
 IS_TEST_NET = False
 
 API_BASE_URL_TEST_NET = 'https://testnet-dex.binance.org/'
@@ -15,6 +14,7 @@ class BinanceChainClient(object):
     API Client for Binance DEX
     Official Document: https://binance-chain.github.io/api-reference/dex-api/paths.html
     """
+
     def __init__(self, is_test_net=IS_TEST_NET, api_base_url_with_port=None):
         """
         API Client
@@ -212,7 +212,7 @@ class BinanceChainClient(object):
         url = '%sapi/v1/account/%s/sequence' % (self.api_base_url_with_port, address)
         ret = binance_api_request(url=url,
                                   method='GET')
-        return ret        
+        return ret
 
     def get_transaction(self, tx_hash):
         """
@@ -282,7 +282,7 @@ class BinanceChainClient(object):
         # inputs Validation
         if limit and limit not in api_types_instance.allowed_depth_limit:
             return std_ret(False, 'Limit must be in: %s' % api_types_instance.allowed_depth_limit)
- 
+
         url = '%sapi/v1/depth?symbol=%s' % (self.api_base_url_with_port, symbol)
         url = url + '&limit=%s' % limit if limit else url
         ret = binance_api_request(url=url,
@@ -354,7 +354,7 @@ class BinanceChainClient(object):
                                   method='GET')
         return ret
 
-    def get_order_open(self, address, symbol = None, limit = 500, offset = 0, total = 0):
+    def get_order_open(self, address, symbol=None, limit=500, offset=0, total=0):
         """
          - Summary: Get open orders.
          - Description: Gets open orders for a given address.
@@ -363,14 +363,14 @@ class BinanceChainClient(object):
         :return:
         """
         url = '%sapi/v1/orders/open?address=%s&limit=%s&offset=%s&total=%s' % \
-                (self.api_base_url_with_port, address, limit, offset, total)
+              (self.api_base_url_with_port, address, limit, offset, total)
         url = url + '&symbol=%s' % symbol if symbol else url
         ret = binance_api_request(url=url,
                                   method='GET')
         return ret
-    
-    def get_order_closed(self, address, end = None, side = None, start = None,
-                         status = None, symbol = None, limit = 500, offset = 0, total = 0):
+
+    def get_order_closed(self, address, end=None, side=None, start=None,
+                         status=None, symbol=None, limit=500, offset=0, total=0):
         """
          - Summary: Get closed orders.
          - Description: Gets closed (filled and cancelled) orders for a given address.
@@ -384,7 +384,7 @@ class BinanceChainClient(object):
             return std_ret(False, 'Status should be in: %s' % api_types_instance.allowed_order_status)
 
         url = '%sapi/v1/orders/closed?address=%s&limit=%s&offset=%s&total=%s' % \
-                (self.api_base_url_with_port, address, limit, offset, total)
+              (self.api_base_url_with_port, address, limit, offset, total)
         url = url + '&symbol=%s' % symbol if symbol else url
         url = url + '&start=%s' % start if start else url
         url = url + '&end=%s' % end if end else url
@@ -394,7 +394,7 @@ class BinanceChainClient(object):
                                   method='GET')
         return ret
 
-    def post_broadcase(self, transaction, sync = None):
+    def post_broadcast(self, transaction, sync=None):
         """
          - Summary: Get closed orders.
          - Description: Gets closed (filled and cancelled) orders for a given address.
@@ -409,6 +409,7 @@ class BinanceChainClient(object):
                                   method='POST', body=transaction)
         return ret
 
+
 class Types(object):
     """
     In case of mis-spell or other wrong strings, let's pre-define some strings here to consume
@@ -422,10 +423,10 @@ class Types(object):
 
         self.allowed_depth_limit = [5, 10, 20, 50, 100, 500, 1000]
 
-        self.allowed_order_status = ['Ack', 'PartialFill', 'IocNoFill', 'FullyFill', 'Canceled', 'Expired', 'FailedBlocking', 'FailedMatching']
+        self.allowed_order_status = ['Ack', 'PartialFill', 'IocNoFill', 'FullyFill', 'Canceled', 'Expired',
+                                     'FailedBlocking', 'FailedMatching']
 
     class Transactions(object):
-
         side_receive = 'RECEIVE'
         side_send = 'SEND'
 
@@ -469,4 +470,3 @@ class Types(object):
 
 # Singleton for Types
 api_types_instance = Types()
-

@@ -51,10 +51,10 @@ If `any error` occurred, message return will be：
 |depth                       |&radic;                    |
 |broadcast                   |&radic;                    |
 |klines                      |&radic;                    |
-|orders/closed               |&radic;                   |
-|orders/open                 |&radic;                   |
+|orders/closed               |&radic;                    |
+|orders/open                 |&radic;                    |
 |orders/{id}                 |&radic;                    |
-|ticker/24hr                 |&radic;                  |
+|ticker/24hr                 |&radic;                    |
 |trades                      |&bigcirc;                  |
 |block-exchange-fee          |&radic;                    |
 |transactions                |&bigcirc;                  |
@@ -158,6 +158,46 @@ Sample success result:
  }
 ```
 
+#### `get_peers()`  -> `/api/v1/peers`
+- Summary: Get network peers.
+- Description: Gets the list of network peers.
+- Destination: Witness node.
+- Rate Limit: 1 requests per IP per second.
+
+Sample success result:
+```python
+> api_client.get_peers()
+
+{
+    'status': True,
+    'result': [{
+        'accelerated': True,
+        'access_addr': 'https://testnet-dex.binance.org:443',
+        'capabilities': ['qs', 'ap', 'ws'],
+        'id': 'gateway-ingress',
+        'listen_addr': 'https://testnet-dex.binance.org:443',
+        'moniker': 'gateway-ingress',
+        'network': 'gateway',
+        'stream_addr': 'wss://testnet-dex.binance.org',
+        'version': '1.0.0'
+        },
+        {
+            'access_addr': 'http://seed-pre-s1.binance.org:80',
+            'capabilities': ['node'],
+            'id': 'aea74b16d28d06cbfbb1179c177e8cd71315cce4',
+            'listen_addr': 'http://seed-pre-s1.binance.org:80',
+            'moniker': 'seed',
+            'network': 'Binance-Chain-Nile',
+            'original_listen_addr': 'ac6d84c3f243a11e98ced0ac108d49f7-704ea117aa391bbe.elb.ap-northeast-1.amazonaws.com:27146',
+            'version': '0.30.1'
+        },
+        {
+        '...OMIT...'
+        }
+    ]
+}
+```
+
 #### `get_tokens()`  -> `/api/v1/tokens`
 - Summary: Get tokens list.
 - Description: Gets a list of tokens that have been issued.
@@ -199,18 +239,40 @@ Sample success result:
 ```python
 > api_client.get_account_info_by_address(address='tbnb1r4gc5ftrkr9ez2khph4h5xxd0mf0hd75jf06gw')
 
-{'status': True, 
- 'result': {'address': 'tbnb1fn9z9vn4f44ekz0a3pf80dcy2wh4d5988phjds', 
-            'public_key': None,
-            'account_number': 666547, 
-            'sequence': 0, 
-            'balances': [{'symbol': 'BNB', 
-                          'free': '1399.99250000',
-                          'locked': '0.00000000', 
-                          'frozen': '0.00000000'
-                          }]
-            }
+{
+    'status': True, 
+    'result': {'address': 'tbnb1fn9z9vn4f44ekz0a3pf80dcy2wh4d5988phjds', 
+               'public_key': None,
+               'account_number': 666547, 
+               'sequence': 0, 
+               'balances': [{'symbol': 'BNB', 
+                             'free': '1399.99250000',
+                             'locked': '0.00000000', 
+                             'frozen': '0.00000000'
+                            }]
+               }
  }
+```
+
+#### `get_account_sequence_by_address(address)`  -> `/api/v1/account/{address}/sequence`
+- Summary: Get an account sequence.
+- Description: Gets an account sequence for an address.
+- Destination: Witness node.
+- Rate Limit: 5 requests per IP per second.
+- Param `address`: Public address
+
+Sample success result:
+
+```python
+> api_client.get_account_sequence_by_address(address='tbnb1r4gc5ftrkr9ez2khph4h5xxd0mf0hd75jf06gw')
+
+{
+    'status': True,
+    'result': {
+        'sequence': 29
+    }
+}
+
 ```
 
 #### `get_transaction(tx_hash)`  -> `/api/v1/tx/{hash}`
@@ -313,6 +375,30 @@ Sample success result:
 }
 ```
 
+#### `get_depth(symbol, limit)`  -> `/api/v1/depth`
+- Summary: Get the order book.
+- Description: Gets the order book depth data for a given pair symbol.
+- Destination: Validator node.
+- Rate Limit: 10 requests per IP per second.
+- Param `symbol`: Transaction Hash: Market pair symbol, e.g. NNB-0AD_BNB
+- Param `limit`: The limit of results. Allowed limits: [5, 10, 20, 50, 100, 500, 1000]    
+
+Sample success result:
+
+```python
+> api_client.get_depth(symbol="NNB-0AD_BNB", limit=5)
+
+{
+    'status': True, 
+    'result': {
+                'height': 10124869, 
+                'bids': [], 
+                'asks': []
+    }
+}
+```
+
+
 #### `get_klines(trading_pair, interval, start_time, end_time, limit)`  -> `/api/v1/klines`
 - Summary: Get candlestick bars.
 - Description: Gets candlestick/kline bars for a symbol. Bars are uniquely identified by their open time.
@@ -359,3 +445,59 @@ Sample success result:
             }
  }
 ```
+
+
+#### `get_order_open(address, symbol, limit, offset, total)`  ->  `/api/v1/orders/open`
+- Summary: Get open orders.
+- Description: Gets open orders for a given address.
+- Rate Limit: 5 requests per IP per second.
+- Param `address`: The owner address.
+- Param `symbol`: symbol, default is `None`.
+- Param `limit`: default `500`; max `1000`.
+- Param `offset`: start with 0; default `0`.
+- Param `total`: total number required, `0` for not required and `1` for required; 
+default `0`, return `total=-1` in response    
+    
+Sample success result:
+
+```python
+> api_client.get_order_open(address='tbnb1r4gc5ftrkr9ez2khph4h5xxd0mf0hd75jf06gw')
+
+{
+    'status': True,
+    'result': {
+        'total': -1, 
+        'order': []
+    }
+}
+```
+
+#### `get_order_closed(address, end=None, side=None, start=None, status=None, symbol=None, limit=500, offset=0, total=0)`  ->  `/api/v1/orders/closed`
+
+- Summary: Get closed orders.
+- Description: Gets closed (filled and cancelled) orders for a given address.
+- Query Window: Default query window is latest 7 days; The maximum start - end query window is 3 months.
+- Rate Limit: 5 requests per IP per second.
+- Param `address`: The owner address.
+- Param `end`: end time in Milliseconds, default is `None`.
+- Param `limit`: default `500`; max `1000`.
+- Param `offset`: start with 0; default `0`.
+- Param `side`: order side. `1` for buy and `2` for sell. default `None`.
+- Param `start`: start time in Milliseconds. default `None`.
+- Param `status`: order status list. default `None`.
+Allowed value: `[Ack, PartialFill, IocNoFill, FullyFill, Canceled, Expired, FailedBlocking, FailedMatching]`
+- Param `symbol`: symbol, default is `None`.
+- Param `total`: total number required, `0` for not required and `1` for required; 
+    
+Sample success result:
+
+```python
+> api_client.get_order_closed(address='tbnb1r4gc5ftrkr9ez2khph4h5xxd0mf0hd75jf06gw')
+
+{
+    'status': True,
+    'result': {
+        'total': -1, 
+        'order': []
+    }
+}

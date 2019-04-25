@@ -55,22 +55,22 @@ node_rpc_instance.XXX()
 |ABCIQuery         |&bigcirc;                  |
 |Block             |&radic;                    |
 |BlockResults      |&radic;                    | 
-|BlockChainInfo    |&radic;                   |
+|BlockChainInfo    |&radic;                    |
 |BroadcastTxAsync  |&radic;                    |
 |BroadcastTxCommit |&radic;                    |
 |BroadcastTxSync   |&radic;                    |
 |Commit            |&radic;                    |
 |ConsensusParams   |&radic;                    |
 |ConsensusState    |&ominus;                   |
-|DumpConsensusState|&radic;                  |
+|DumpConsensusState|&radic;                    |
 |Genesis           |&radic;                    |
-|Health            |&radic;                  |
+|Health            |&radic;                    |
 |NetInfo           |&radic;                    |
-|NumUnconfirmedTxs |&radic;                 |
+|NumUnconfirmedTxs |&radic;                    |
 |Status            |&radic;                    |
 |Subscribe         |&times;                    |
 |Tx                |&radic;                    |
-|TxSearch          |&radic;                  |
+|TxSearch          |&radic;                    |
 |UnconfirmedTxs    |&radic;                    |
 |UnsafeDialPeers   |&times;                    |
 |UnsafeDialSeeds   |&times;                    |
@@ -312,6 +312,105 @@ Success sample result:
         }, 
         'id': '', 
         'jsonrpc': '2.0'
+    }
+}
+```
+
+
+#### `blockchain(min_height, max_height)`  -> `BlockChainInfo`
+- Summary: Get block headers for minHeight <= height <= maxHeight.
+- Description: Block headers are returned in descending order (highest first).   
+- Destination: NA.
+- Rate Limit: NA.
+- Param `min_height`: Min height of blockchain.
+- Param `max_height`: Max height of blockchain.
+    
+Success sample result:
+
+```python
+> node_rpc_instance.blockchain(8, 10)
+
+{   
+    'status': True,
+    'result': {
+        'jsonrpc': '2.0',
+        'id': '',
+        'result': {
+            'last_height': '9913156',
+            'block_metas': [{
+                'header': {
+                    'num_txs': '0',
+                    'next_validators_hash': '80D9AB0FC10D18CA0E0832D5F4C063C5489EC1443DFB738252D038A82131B27A',
+                    'app_hash': 'E7D96927FD82FD910624AA8034B8A527FCEB1F7AB353DE789A3ECA8D400BDE31',
+                    'time': '2019-03-07T01:57:22.135103158Z',
+                    'height': '10',
+                    'version': {
+                        'app': '0',
+                        'block': '10'
+                    },
+                    'validators_hash': '80D9AB0FC10D18CA0E0832D5F4C063C5489EC1443DFB738252D038A82131B27A',
+                    'last_results_hash': '',
+                    'data_hash': '',
+                    'chain_id': 'Binance-Chain-Nile',
+                    'consensus_hash': '294D8FBD0B94B767A7EBA9840F299A3586DA7FE6B5DEAD3B7EECBA193C400F93',
+                    'last_block_id': {
+                        'parts': {
+                            'hash': 'BB3C36D5BBDAB441A7339385C071C4E804C4C3DD5C7BC15D60BC658A6B261906',
+                            'total': '1'
+                        },
+                        'hash': '1AF674F804E277354E8742176ECA74E338F52C237E6DBFF92819D75037E4F651'
+                    },
+                    'evidence_hash': '',
+                    'last_commit_hash': '5442553C06521016756796015AF78FCAC752FFA9E94ACAF4DAA5DF4113B4B354',
+                    'total_txs': '0',
+                    'proposer_address': 'E0DD72609CC106210D1AA13936CB67B93A0AEE21'
+                },
+                'block_id': {
+                    'parts': {
+                        'hash': '8C63BE3E3A221B984219CFAA1C196DDF0F202D68293311BFA9EE0B7A9155EACD',
+                        'total': '1'
+                    },
+                    'hash': '5701A12896315A121303A979ACB707ACC447E20EFACFCB26174E9ED3997E2F5C'
+                }
+            }, {
+                'header': {
+                    'num_txs': '0',
+                    'next_validators_hash': '80D9AB0FC10D18CA0E0832D5F4C063C5489EC1443DFB738252D038A82131B27A',
+                    'app_hash': '67EE7389DDE7D974B2214E628E832B6E00EEF5A229BE991EB3ECDD28BB9A50D2',
+                    'time': '2019-03-07T01:57:20.895415976Z',
+                    'height': '9',
+                    'version': {
+                        'app': '0',
+                        'block': '10'
+                    },
+                    'validators_hash': '80D9AB0FC10D18CA0E0832D5F4C063C5489EC1443DFB738252D038A82131B27A',
+                    'last_results_hash': '',
+                    'data_hash': '',
+                    'chain_id': 'Binance-Chain-Nile',
+                    'consensus_hash': '294D8FBD0B94B767A7EBA9840F299A3586DA7FE6B5DEAD3B7EECBA193C400F93',
+                    'last_block_id': {
+                        'parts': {
+                            'hash': '4CDD64740CB7F47ECCF1701B1D7EC517262B329FB419E7CD85CB7A4C3316CE70',
+                            'total': '1'
+                        },
+                        'hash': 'B4D8CE9DF33E05FCEDCB2995EAB6EE68BF5DBAA414C3FD528CB3EDA7DDBE3FBF'
+                    },
+                    'evidence_hash': '',
+                    'last_commit_hash': '813865AFB7289F85809A23009DCDD0FC5B00F9892CC5A6BEE4B40EE6A4E82711',
+                    'total_txs': '0',
+                    'proposer_address': 'B3727172CE6473BC780298A2D66C12F1A14F5B2A'
+                },
+                'block_id': {
+                    'parts': {
+                        'hash': 'BB3C36D5BBDAB441A7339385C071C4E804C4C3DD5C7BC15D60BC658A6B261906',
+                        'total': '1'
+                    },
+                    'hash': '1AF674F804E277354E8742176ECA74E338F52C237E6DBFF92819D75037E4F651'
+                }
+            }, 
+            {    '...OMIT...'    }
+            ]
+        }
     }
 }
 ```
@@ -573,7 +672,7 @@ Success sample result:
                 'proposal_block_hash': 'D18F0591B541756B057B3B9615DEEF29CDA80405459C9374E9B66D7A26FE0D6B', 
                 'valid_block_hash': 'D18F0591B541756B057B3B9615DEEF29CDA80405459C9374E9B66D7A26FE0D6B', 
                 'start_time': '2019-04-15T05:15:38.972350822Z', 
-                'height/round/step': '8393276/0/6'
+                'height/round/step': '8393276/0/6',
                 'height_vote_set': [
                     {
                         'prevotes_bit_array': 'BA{11:_xx_xxxx_xx} 800000000000/1100000000000 = 0.73', 
@@ -605,7 +704,7 @@ Success sample result:
                             'nil-Vote'
                         ]
                     }
-                ], 
+                ]
             }
         },
         'id': '', 

@@ -65,6 +65,23 @@ api_client = BinanceChainClient(is_test_net=IS_TEST_NET)
 #                             interval=api_types_instance.KLine.interval_4hour,
 #                             limit=100))
 
+
+# # Get order by ID.
+# order_id = ''
+# print('Order ID %s:' % order_id)
+# print(api_client.get_order_by_id(order_id))
+
+# # Get open orders.
+# address = 'tbnb1r4gc5ftrkr9ez2khph4h5xxd0mf0hd75jf06gw'
+# print('Open orders for %s:' % address)
+# print(api_client.get_order_open(address))
+#
+# # Get closed orders.
+# address = 'tbnb1r4gc5ftrkr9ez2khph4h5xxd0mf0hd75jf06gw'
+# print('Closed orders for %s:' % address)
+# print(api_client.get_order_closed(address))
+
+
 # ------------ End of API Sample ----------------
 
 
@@ -192,7 +209,7 @@ node_rpc_instance = BinanceChainNodeRPC(is_test_net=True,
 # print(node_rpc_instance.block(height=10))
 #
 # # Get block headers for minHeight <= height <= maxHeight
-# print(node_rpc_instance.blockchain(10, 10))
+# print(node_rpc_instance.blockchain(8, 10))
 #
 # # gets ABCIResults at a given height
 # print(node_rpc_instance.block_results(height=100))
@@ -203,7 +220,7 @@ node_rpc_instance = BinanceChainNodeRPC(is_test_net=True,
 # # Broadcast Transaction Sync,
 # print(node_rpc_instance.broadcast_tx_sync(tx_id='123'))
 #
-# # Broadcast Trsaction Commit
+# # Broadcast Transaction Commit
 # print(node_rpc_instance.broadcast_tx_commit(tx_id='123'))
 #
 # # Get block commit at a given height.
@@ -237,3 +254,5 @@ node_rpc_instance = BinanceChainNodeRPC(is_test_net=True,
 # print(node_rpc_instance.validators(height=10))
 
 # ----------- End of Node RPC Sample --------------
+
+

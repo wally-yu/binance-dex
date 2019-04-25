@@ -173,7 +173,7 @@ Request URL: https://seed-pre-s3.binance.org:443/num_unconfirmed_txs ... ...
 
 
 
-## SDk Overview
+## SDK Overview
 As you might noticed from above code sample, this SDK is composed with 4 parts:
 - API
 - WebSockets
@@ -400,7 +400,7 @@ As you might noticed from above code sample, this SDK is composed with 4 parts:
 
 |               |API        |WebSockets |JSONRPC    |Crypto     |
 |:---:          |:---:      |:---:      |:---:      |:---:      |
-|Requir Network   |&radic;    |&radic;    |&radic;    |    X       |
+|Requir Network |&radic;    |&radic;    |&radic;    |    X      |
 
 
 ## Join us:
