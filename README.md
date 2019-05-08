@@ -48,7 +48,7 @@ Find full Sample Usage from [code_examples.py](https://github.com/wally-yu/binan
 
 #### - API Sample Usage
 ```
-from binance_dex.api import Client
+from binance_dex.api import BinanceChainClient
 
 # create API Client instance
 api_client = BinanceChainClient(is_test_net=True)
