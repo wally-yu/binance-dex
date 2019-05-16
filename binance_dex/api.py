@@ -409,6 +409,53 @@ class BinanceChainClient(object):
                                   method='POST', body=transaction)
         return ret
 
+    def transactions(self, address, block_height=None, start_time=None, end_time=None, limit=None, offset=None,
+                     side=None, tx_asset=None, tx_type=None):
+        """
+        Gets a list of transactions
+        :param address: Required parameter, to indicate address
+        :param non-mandatory parameters, can pass in:
+         - block_height: block height, <long type>
+         - start_time: start time, The maximum query window is 3 months, <date time type>
+         - end_time: end time, The maximum query window is 3 months, <date time type>
+         - limit: limits <int type>
+         - offset: offset <int type>
+         - side: transaction side. Allowed value: [RECEIVE, SEND], <string type>
+         - tx_asset: txAsset, <string type>
+         - tx_type: transaction type. Allowed value: [ NEW_ORDER,ISSUE_TOKEN,BURN_TOKEN,LIST_TOKEN,CANCEL_ORDER,
+         FREEZE_TOKEN,UN_FREEZE_TOKEN,TRANSFER,PROPOSAL,VOTE,MINT,DEPOSIT], <string type>
+        :return:
+        """
+        url = '%sapi/v1/transactions/?address=%s' % (self.api_base_url_with_port, address)
+
+        # compose url
+        if block_height:
+            url += '&blockHeight=' + str(block_height)
+        if start_time:
+            url += '&startTime=' + str(int(start_time.timestamp())) + '000'
+        if end_time:
+            url += '&endTime=' + str(int(end_time.timestamp())) + '000'
+        if limit:
+            url += '&limit=' + str(limit)
+        if offset:
+            url += '&offset=' + str(offset)
+        if side:
+            # input data validation
+            if side not in Types().allowed_transactions_side:
+                raise Exception('side only allow: %s' % Types().allowed_transactions_side)
+            url += '&side=' + str(side)
+        if tx_asset:
+            url += '&txAsset=' + str(tx_asset)
+        if tx_type:
+            # input data validation
+            if tx_type not in Types().allowed_transactions_type:
+                raise Exception('type only allow: %s' % Types().allowed_transactions_type)
+            url += '&txType' + str(tx_type)
+        # perform query
+        ret = binance_api_request(url=url,
+                                  method='GET')
+        return ret
+
 
 class Types(object):
     """
@@ -418,6 +465,17 @@ class Types(object):
     def __init__(self):
         self.allowed_transactions_side = [self.Transactions.side_receive,
                                           self.Transactions.side_send]
+        self.allowed_transactions_type = [self.Transactions.type_new_order,
+                                          self.Transactions.type_issue_token,
+                                          self.Transactions.type_burn_token,
+                                          self.Transactions.type_list_token,
+                                          self.Transactions.type_cancel_order,
+                                          self.Transactions.type_freeze_token,
+                                          self.Transactions.type_un_freeze_token,
+                                          self.Transactions.type_transfer,
+                                          self.Transactions.type_proposal,
+                                          self.Transactions.type_vote]
+
         self.allowed_kline_interval = ['1m', '3m', '5m', '15m', '30m', '1h', '2h', '4h', '6h', '8h', '12h',
                                        '1d', '3d', '1w', '1M']
 

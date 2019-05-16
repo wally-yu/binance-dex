@@ -1,6 +1,6 @@
 # Global setting to indicate if test net
 # If not specify and pass to "Class", default value would be "False"
-IS_TEST_NET = True
+IS_TEST_NET = False
 
 # ---------------- API Sample -------------------
 
@@ -80,7 +80,16 @@ api_client = BinanceChainClient(is_test_net=IS_TEST_NET)
 # address = 'tbnb1r4gc5ftrkr9ez2khph4h5xxd0mf0hd75jf06gw'
 # print('Closed orders for %s:' % address)
 # print(api_client.get_order_closed(address))
-
+#
+# Get Transactions
+from datetime import datetime
+address = 'bnb1jxfh2g85q3v0tdq56fnevx6xcxtcnhtsmcu64m'
+print('Transfer Transactions for BNB during 2019.5.10 - 2019.5.16 for address %s' % address)
+print(api_client.transactions(address=address,
+                              tx_asset='BNB',
+                              tx_type=api_types_instance.Transactions.type_transfer,
+                              start_time=datetime(2019, 5, 10),
+                              end_time=datetime(2019, 5, 17)))
 
 # ------------ End of API Sample ----------------
 
@@ -97,7 +106,7 @@ crypto_instance = BinanceChainCrypto(is_test_net=IS_TEST_NET)
 # print("Generating Mnemonic Words: ")
 # print(mnemonic_words)
 #
-# # Generate Private Key, Public Address and mnemonic
+# Generate Private Key, Public Address and mnemonic
 # key = crypto_instance.generate_key()
 # print('Generating Private Key / Public Key / Mnemonic words: ')
 # print(key)
@@ -193,7 +202,7 @@ from binance_dex.node_rpc import BinanceChainNodeRPC
 # Create Instance
 
 # # OPTION 1: using existing RPC node
-node_rpc_instance = BinanceChainNodeRPC(is_test_net=True,
+node_rpc_instance = BinanceChainNodeRPC(is_test_net=False,
                                         node_rpc_url=None)
 
 # #OPTION 2: using your own node
@@ -206,7 +215,7 @@ node_rpc_instance = BinanceChainNodeRPC(is_test_net=True,
 # print(node_rpc_instance.abci_info())
 #
 # # Get block at a given height. If no height is provided, it will fetch the latest block
-# print(node_rpc_instance.block(height=10))
+# print(node_rpc_instance.block(height=6228826))
 #
 # # Get block headers for minHeight <= height <= maxHeight
 # print(node_rpc_instance.blockchain(8, 10))

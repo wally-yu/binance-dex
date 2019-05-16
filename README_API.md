@@ -501,3 +501,19 @@ Sample success result:
         'order': []
     }
 }
+```
+
+#### `transactions(address, block_height, start_time, end_time, limit, offset,side, tx_asset, tx_type):`  ->  `/api/v1/transactions/`
+
+- Summary: Gets a list of transactions
+- param "address": Required parameter, to indicate address
+ - param non-mandatory parameters, can pass in:
+   - block_height: block height, <long type>
+   - start_time: start time, The maximum query window is 3 months, <date time type>
+   - end_time: end time, The maximum query window is 3 months, <date time type>
+    - limit: limits <int type>
+    - offset: offset <int type>
+    - side: transaction side. Allowed value: [RECEIVE, SEND], <string type>
+    - tx_asset: txAsset, <string type>
+    - tx_type: transaction type. Allowed value: [ NEW_ORDER,ISSUE_TOKEN,BURN_TOKEN,LIST_TOKEN,CANCEL_ORDER,
+         FREEZE_TOKEN,UN_FREEZE_TOKEN,TRANSFER,PROPOSAL,VOTE,MINT,DEPOSIT], <string type>
