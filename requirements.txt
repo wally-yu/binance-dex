@@ -5,6 +5,6 @@ eth_utils==1.4.1
 two1==3.10.9
 pycrypto==2.6.1
 pycryptodome==3.8.0
-requests==2.11.1
+requests==2.20.0
 base58==0.2.2
 protobuf==3.6.1
