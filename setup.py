@@ -11,7 +11,7 @@ setup(
     author=u'Wally Yu',
     install_requires=['requests==2.11.1', 'websocket-client-py3==0.15.0', 'mnemonic==0.18', 'rlp==1.1.0',
                       'eth_utils==1.4.1', 'two1==3.10.9', 'pycrypto==2.6.1', 'pycryptodome==3.8.0', 'base58==0.2.2',
-                      'protobuf==3.6.1'],
+                      'protobuf==3.18.3'],
     url='https://github.com/wally-yu/binance-dex',
     include_package_data=True,
     license='MIT License',
